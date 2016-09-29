@@ -12,7 +12,7 @@
 */
 
 //------------------------------------------------------------------ FRONT START
-Route::get('/homie', function () {
+Route::get('/homemario', function () {
     return view('front.home');
 });
 Route::get('/layanan', function () {
