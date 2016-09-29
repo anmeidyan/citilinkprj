@@ -1,0 +1,20 @@
+.showMeOnImageHover {
+    background-color:rgba(170, 0, 170, 0.3);
+    font-family:Arial;
+    color:white;
+    text-align:center;
+    display:table-cell;
+    position:absolute;
+}
+.showMeOnImageHover>.contentHolder {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin:10px;
+}
+.showMeOnImageHover .title {
+    font-size:30px;
+}
+.showMeOnImageHover .content {
+    font-size: 16px;
+}
