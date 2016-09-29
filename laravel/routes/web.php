@@ -14,6 +14,7 @@
 //------------------------------------------------------------------ FRONT START
 
 Route::get('/', function () {
+
     return view('front.home');
 });
 
