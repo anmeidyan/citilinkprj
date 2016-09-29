@@ -15,6 +15,7 @@
 Route::get('/', function () {
     return view('front.home');
 });
+
 Route::get('/layanan', function () {
     return view('front.layanan');
 });
