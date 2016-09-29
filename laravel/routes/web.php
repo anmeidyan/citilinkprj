@@ -12,9 +12,11 @@
 */
 
 //------------------------------------------------------------------ FRONT START
+
 Route::get('/daribranchmario', function () {
-    return view('front.home');
+    return view('front.home');//Dari mario
 });
+
 Route::get('/layanan', function () {
     return view('front.layanan');
 });
