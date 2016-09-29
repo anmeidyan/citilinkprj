@@ -13,8 +13,8 @@
 
 //------------------------------------------------------------------ FRONT START
 
-Route::get('/daribranchmario', function () {
-    return view('front.home');//Dari mario
+Route::get('/', function () {
+    return view('front.home');
 });
 
 Route::get('/layanan', function () {
