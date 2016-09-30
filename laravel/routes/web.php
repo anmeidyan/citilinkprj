@@ -22,6 +22,9 @@ Auth::routes();
 
 
 Route::get('/', 'Web\HomeController@index');
+Route::post('getcity', 'Web\HomeController@getcity');
+
+
 Route::get('services', 'Web\ServicesController@index');
 Route::get('select-car', 'Web\SelectCarController@index');
 
@@ -45,6 +48,13 @@ Route::group(['middleware' => 'admin'],function(){
 | SUPER ADMIN
 |-------------------------------------------------------------------------------
 */
+
+Route::get('admin/login', function ()
+{
+  # code...
+  return view('auth.login');
+});
+
 Route::group(['middleware' => 'superadmin'],function(){
     //DASHBOARD--------------------------------------------------------------------
     Route::get('/admin', function () {
