@@ -11,18 +11,23 @@
 |
 */
 
-//------------------------------------------------------------------ FRONT START
-
+/*
+|--------------------------------------------------------------------------
+| AUTHENTICATION
+|--------------------------------------------------------------------------
+*/
 Auth::routes();
 
-Route::get('/', 'Web\HomeController@index');
+//------------------------------------------------------------------ FRONT START
 
-Route::get('/layanan', function () {
-    return view('front.layanan');
-});
-Route::get('/pilihmobil', function () {
-    return view('front.pilih');
-});
+
+Route::get('/', 'Web\HomeController@index');
+Route::post('getcity', 'Web\HomeController@getcity');
+
+
+Route::get('services', 'Web\ServicesController@index');
+Route::get('select-car', 'Web\SelectCarController@index');
+
 
 Route::group(['middleware' => 'web','auth'],function(){
 
@@ -33,9 +38,9 @@ Route::group(['middleware' => 'web','auth'],function(){
 //-------------------------------------------------------------------- FRONT END
 
 /*
-|-------------------------------------------------------------------------------
+|--------------------------------------------------------------------------
 | ADMIN
-|-------------------------------------------------------------------------------
+|--------------------------------------------------------------------------
 */
 
 Route::group(['middleware' => 'admin','superadmin'],function(){

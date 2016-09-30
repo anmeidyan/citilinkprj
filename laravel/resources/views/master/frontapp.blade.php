@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Citilink</title>
 
     <!-- Styles -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -62,7 +61,7 @@
             <ul class="nav nav-tabs nav-justified">
                 <li><a href="#"><img src="{{asset('assets/img/pesawat.png')}}"/> <span>Flight</span></a></li>
                 <li><a href="#"><img src="{{asset('assets/img/hotel.png')}}"/> <span>Hotel</span></a></li>
-                <li><a href="{{url('/pilihmobil')}}"><img src="{{asset('assets/img/mobil.png')}}"/> <span>Cars</span></a></li>
+                <li><a href="{{url('/select-car')}}"><img src="{{asset('assets/img/mobil.png')}}"/> <span>Cars</span></a></li>
                 <li><a href="#"><img src="{{asset('assets/img/store.png')}}"/> <span>Store</span></a></li>
             </ul>
         </div>

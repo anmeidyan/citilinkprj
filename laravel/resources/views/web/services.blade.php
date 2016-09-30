@@ -1,5 +1,6 @@
 @extends('master.frontapp')
 @section('content')
+<title>Citilink | Services</title>
 
 <link href="{{ asset('assets/css/stylesyehbi.css') }}" rel="stylesheet">
 <br>

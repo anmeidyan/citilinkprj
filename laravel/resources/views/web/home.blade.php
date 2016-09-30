@@ -1,5 +1,6 @@
 @extends('master.frontapp')
 @section('content')
+<title>Citilink</title>
 
 <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
 <script src="{{ asset('assets/js/waypoints.min.js') }}"></script>
@@ -24,9 +25,9 @@
                     <span>Area Penjemputan & Detail Alamat</span><br>
                     <div class="input-group" style="margin-bottom:10px;margin-top:7px;">
                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-                        <select class="form-control">
-                            <option selected disabled>Pilih Area</option>
-                            <option value="option">Selokan</option>
+                        <select class="form-control" id="select-area">
+
+                            <option selected>Pilih Area</option>
                         </select>
                     </div>
                     <div class="input-group">
@@ -71,7 +72,7 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
 
 <div class="container">
     <div class="col-sm-12 home-title padding-0">
@@ -579,4 +580,19 @@ $(window).bind('mousewheel', function(e){
     }, {offset:'100%'});
 </script>
 
+<script type="text/javascript">
+var postData =
+            {
+                "_token":"{{ csrf_token() }}"
+            }
+$.ajax({
+  type: "POST",
+  url: "{{ url('getcity')}}",
+  data: postData,
+  success: function (data){
+    $('#select-area').html(data);
+  }
+});
+
+</script>
 @stop
