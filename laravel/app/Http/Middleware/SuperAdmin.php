@@ -15,7 +15,7 @@ class SuperAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->check() && $request->user()->admin == 1) {
+        if (auth()->check() && $request->user()->level == 1) {
             return $next($request);
         }
         return redirect()->guest('/');

@@ -69,7 +69,7 @@
                             <label class="col-md-4 control-label">Privileges</label>
 
                             <div class="col-md-6">
-                                <select class="form-control" name="admin">
+                                <select class="form-control" name="level">
                                     <option>Pilih Hak Akses</option>
                                     <option value="1">SuperAdmin</option>
                                     <option value="2">Admin</option>

@@ -15,7 +15,7 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->check() && $request->user()->admin == 2) {
+        if (auth()->check() && $request->user()->level == 2) {
             return $next($request);
         }
         return redirect()->guest('/');
