@@ -42,7 +42,16 @@
                             <a href="#">Info Penerbangan</a>
                         </li>
                         <li class="login-ul">
-                            <a href="#"><i class="fa fa-user" aria-hidden="true"></i> Login</a>
+                            @if (Auth::guest())
+                            <a href="{{url('/login')}}"><i class="fa fa-user" aria-hidden="true"></i> Login</a>
+                            @else
+                            <a href="{{url('/logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                <i class="fa fa-user" aria-hidden="true"></i> {{Auth::user()->name}}
+                            </a>
+                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                            @endif
                             <a href="#" class="supergreen-nav"><span style="color:#65b32e;">SUPER</span><span style="color:#008c3c;">GREEN</span></a>
                         </li>
                     </ul>

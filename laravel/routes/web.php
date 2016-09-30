@@ -12,6 +12,8 @@
 */
 
 //------------------------------------------------------------------ FRONT START
+Auth::routes();
+
 Route::get('/', function () {
     return view('front.home');
 });
@@ -22,14 +24,30 @@ Route::get('/layanan', function () {
 Route::get('/pilihmobil', function () {
     return view('front.pilih');
 });
+
+Route::group(['middleware' => 'web','auth'],function(){
+
+});
+
 //-------------------------------------------------------------------- FRONT END
 
 //------------------------------------------------------------------- BACK START
-Route::get('/admin', function () {
-    return view('admin.dashboard');
+
+Route::group(['middleware' => 'admin','superadmin'],function(){
+    // DASHBOARD
+    Route::get('/admin', function () {
+        return view('admin.dashboard');
+    });
 });
 
-// SLIDER
-Route::resource('admin/slider','SliderController');
+Route::group(['middleware' => 'superadmin'],function(){
+    // DASHBOARD
+    Route::get('/admin', function () {
+        return view('admin.dashboard');
+    });
+
+    // SLIDER
+    Route::resource('admin/slider','SliderController');
+});
 
 //--------------------------------------------------------------------- BACK END
