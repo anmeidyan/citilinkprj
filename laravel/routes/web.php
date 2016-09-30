@@ -35,34 +35,23 @@ Route::group(['middleware' => 'web','auth'],function(){
 
 });
 
+//-------------------------------------------------------------------- FRONT END
+
 /*
 |--------------------------------------------------------------------------
 | ADMIN
 |--------------------------------------------------------------------------
 */
-Route::group(['middleware' => 'admin'],function(){
 
-});
-/*
-|-------------------------------------------------------------------------------
-| SUPER ADMIN
-|-------------------------------------------------------------------------------
-*/
-
-Route::get('admin/login', function ()
-{
-  # code...
-  return view('auth.login');
-});
-
-Route::group(['middleware' => 'superadmin'],function(){
-    //DASHBOARD--------------------------------------------------------------------
+Route::group(['middleware' => 'admin','superadmin'],function(){
+    //DASHBOARD-----------------------------------------------------------------
     Route::get('/admin', function () {
         return view('admin.dashboard');
     });
+    //USERS---------------------------------------------------------------------
+    Route::resource('admin/users','Admin\UsersController');
     //SLIDER--------------------------------------------------------------------
     Route::resource('admin/sliders','Admin\SlidersController');
-    //SETTING--------------------------------------------------------------------
-    // Route::resource('admin/settings','Admin\SettingsController');
-
+    //SETTING-------------------------------------------------------------------
+    Route::resource('admin/setting','Admin\SettingsController');
 });

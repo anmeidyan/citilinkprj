@@ -127,8 +127,13 @@
             </a>
         </li>
         <li>
-            <a href="{{url('/admin/slider')}}">
+            <a href="{{url('/admin/sliders')}}">
                 <i class="fa fa-clone"></i> <span>Slider</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{url('/admin/users')}}">
+                <i class="fa fa-users"></i> <span>User</span>
             </a>
         </li>
     </ul>
