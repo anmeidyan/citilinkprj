@@ -4,19 +4,16 @@
 <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
 <script src="{{ asset('assets/js/waypoints.min.js') }}"></script>
 
-<div class="owl-carousel">
-    <div class="item" style="text-align:center;">
-        <img src="{{asset('assets/img/slider1.jpg')}}" style="width:auto; max-width: 100%;max-height:567px;"/>
-    </div>
-    <div class="item" style="text-align:center;">
-        <img src="{{asset('assets/img/slider1.jpg')}}" style="width:auto; max-width: 100%;max-height:567px;"/>
-    </div>
-    <div class="item" style="text-align:center;">
-        <img src="{{asset('assets/img/slider1.jpg')}}" style="width:auto; max-width: 100%;max-height:567px;"/>
-    </div>
-</div>
+<!-- <div class="owl-carousel"> -->
+  @foreach($sliders as $slide)
+  <?php echo $slide->image; ?>
+    <!-- <div class="item" style="text-align:center;">
+        <img src="<?php //echo nl2br($slide->image); ?>" style="width:auto; max-width: 100%;max-height:567px;"/>
+    </div> -->
+  @endforeach
+<!-- </div> -->
 
-<div class="col-lg-offset-2 col-lg-8 booking-car" style="display:none;">
+<!-- <div class="col-lg-offset-2 col-lg-8 booking-car" style="display:none;">
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#find"><img src="{{asset('assets/img/mobil.png')}}" style="width:50px;height:50px;"/> Find Cars</a></li>
         <li><a data-toggle="tab" href="#manage"><img src="{{asset('assets/img/mobil.png')}}" style="width:50px;height:50px;"/> Manage my booking</a></li>
@@ -75,7 +72,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <div class="container">
     <div class="col-sm-12 home-title padding-0">

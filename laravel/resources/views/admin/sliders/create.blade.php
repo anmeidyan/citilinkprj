@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-md-12 col-sm-12 box box-solid">
                 <div class="col-md-6 col-sm-6">
-                    <form class="form-horizontal" action="{{action('SliderController@store')}}" method="post">
+                    <form class="form-horizontal" action="{{ url('admin/sliders') }}" method="post">
                         <input type="hidden" name="_token" value="<?= csrf_token(); ?>">
                         <div class="box-body">
                             <div class="form-group">
@@ -28,7 +28,7 @@
                                 <div class="col-sm-9">
                                     <a href="{{asset('assets/filemanager/dialog.php?type=1&field_id=img')}}" class="btn iframe-btn btn-success" type="button" style="margin-bottom:10px;"><i class="ion ion-android-camera"> Slider Image</i></a><br/>
                                     <img src="" id="previmg" class="img-responsive" style="max-width:500px;max-height:500px;"/><br/>
-                                    <input type="hidden" name="slider_img" class="form-control" id="img">
+                                    <input type="hidden" name="image" class="form-control" id="img">
                                     @if ($errors->has('slider_img'))
                                     <div style="color:red;">
                                         {{ $errors->first('slider_img') }}

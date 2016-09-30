@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Validator;
-use DateTime;
 use Illuminate\Support\Facades\Input;
+use Validator;
+use App\sliders;
+use DateTime;
 
-class SliderController extends Controller
+class SlidersController extends Controller
 {
     /**
     * Display a listing of the resource.
@@ -19,9 +19,10 @@ class SliderController extends Controller
     */
     public function index()
     {
-        $slider = DB::table('slider')->get();
-        return view('admin.slider.slider')
-        ->with('slider',$slider);
+        $sliders = sliders::all();
+        return view('admin.sliders.index',[
+          'sliders' => $sliders
+        ]);
     }
 
     /**
@@ -31,7 +32,7 @@ class SliderController extends Controller
     */
     public function create()
     {
-        return view('admin.slider.slider-add');
+        return view('admin.sliders.create');
     }
 
     /**
@@ -42,35 +43,32 @@ class SliderController extends Controller
     */
     public function store()
     {
-        $now = new DateTime();
-        $slider = Input::get('slider_img');
-
-        $enab=Input::get('enable');
-        if(isset($enab)){
-            $enable=1;
-        }else{
-            $enable=0;
-        }
-
         $rules = [
-            'slider_img'    => 'required',
+            'image'    => 'required',
         ];
         $validator = Validator::make(Input::all(), $rules);
-
         if ($validator->fails()) {
             return redirect()->back()
             ->withErrors($validator)
             ->withInput();
-            // dd($validator->errors()->all());
-
         } else {
-            DB::table('slider')->insert([
-                'slider_img' => $slider,
-                'slider_enable' => $enable,
-                'created_at' => $now,
-            ]);
 
-            return redirect('/admin/slider')->with('success-addslider', 'Success Add Slider');
+            $now    = new DateTime();
+            $image  = Input::get('image');
+            $enab   = Input::get('enable');
+            if(isset($enab)){
+                $enable=1;
+            }else{
+                $enable=0;
+            }
+
+            $sliders = new sliders;
+            $sliders->enable        = $enable;
+            $sliders->image         = $image;
+            $sliders->created_at    = $now;
+            $sliders->save();
+
+            return redirect('admin/sliders')->with('success', 'successfully created data');
         }
     }
 
@@ -93,9 +91,11 @@ class SliderController extends Controller
     */
     public function edit($id)
     {
-        $slider = DB::table('slider')->where('slider_id',$id)->first();
-        return view('admin.slider.slider-detail')
-        ->with('slider',$slider);
+        $sliders = sliders::find($id);
+        // show the edit form
+        return view('admin.sliders.edit',[
+          'sliders' => $sliders
+        ]);
     }
 
     /**
@@ -105,21 +105,10 @@ class SliderController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function update()
+    public function update($id)
     {
-        $now = new DateTime();
-        $id = Input::get('slider_id');
-        $slider = Input::get('slider_img');
-
-        $enab=Input::get('enable');
-        if(isset($enab)){
-            $enable=1;
-        }else{
-            $enable=0;
-        }
-
         $rules = [
-            'slider_img'    => 'required',
+            'image'    => 'required',
         ];
         $validator = Validator::make(Input::all(), $rules);
 
@@ -127,16 +116,25 @@ class SliderController extends Controller
             return redirect()->back()
             ->withErrors($validator)
             ->withInput();
-            // dd($validator->errors()->all());
-
         } else {
-            DB::table('slider')->where('slider_id',$id)->update([
-                'slider_img' => $slider,
-                'slider_enable' => $enable,
-                'updated_at' => $now,
-            ]);
+          $now = new DateTime();
+          $slider = Input::get('image');
+          $enab=Input::get('enable');
+          if(isset($enab)){
+              $enable=1;
+          }else{
+              $enable=0;
+          }
 
-            return redirect('/admin/slider')->with('success-editslide', 'Success Edit Slider');
+
+          $sliders = sliders::find($id);
+          $sliders->enable        = $enable;
+          $sliders->image         = $slider;
+          $sliders->updated_at    = $now;
+          $sliders->save();
+
+
+          return redirect('/admin/sliders')->with('success', 'successfully updated data');
         }
     }
 
@@ -148,6 +146,11 @@ class SliderController extends Controller
     */
     public function destroy($id)
     {
-        //
+        // delete
+       $sliders = sliders::find($id);
+       $sliders->delete();
+
+       // redirect
+       return redirect('/admin/sliders')->with('success', 'successfully deleted data');
     }
 }

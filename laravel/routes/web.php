@@ -13,10 +13,7 @@
 
 //------------------------------------------------------------------ FRONT START
 
-Route::get('/', function () {
-
-    return view('front.home');
-});
+Route::get('/', 'Web\HomeController@index');
 
 Route::get('/layanan', function () {
     return view('front.layanan');
@@ -38,9 +35,7 @@ Route::get('/admin', function () {
 | SLIDER
 |--------------------------------------------------------------------------
 */
-Route::resource('admin/slider','SliderController');
-
-
+Route::resource('admin/sliders','Admin\SlidersController');
 /*
 |--------------------------------------------------------------------------
 | SETTING

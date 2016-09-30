@@ -21,7 +21,7 @@
         <div class="nav-tabs-custom">
           <ul class="nav nav-tabs">
             <!-- <li class="active"><a href="{{ url('/admin/slider-list') }}">Slider List</a></li> -->
-            <li class="pull-right"><a href="{{ url('/admin/slider/create') }}"><i class="fa fa-plus" aria-hidden="true"></i> Add Slider</a></li>
+            <li class="pull-right"><a href="{{ url('/admin/sliders/create') }}"><i class="fa fa-plus" aria-hidden="true"></i> Add Slider</a></li>
             <!-- <li><a href="{{ url('/admin/product/product-category') }}">Product Category</a></li> -->
           </ul>
           @if(Session::has('success-addslide'))
@@ -49,17 +49,18 @@
                     <tr>
                       <th>ID</th>
                       <th>Enable</th>
-                      <th>Slider Image</th>
-                      <th>Created At</th>
+                      <th>Image</th>
+                      <th>Created at</th>
+                      <th>Updated at</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach($slider as $slider1)
+                    @foreach($sliders as $slider)
                     <tr>
-                      <td>{{ $slider1->slider_id }}</td>
+                      <td>{{ $slider->id }}</td>
                       <td>
-                            <?php if($slider1->slider_enable == 1){ ?>
+                            <?php if($slider->enable == 1){ ?>
                             <div class="label label-success"><i class="fa fa-check"></i></div>
 
                             <?php } else { ?>
@@ -67,11 +68,16 @@
                             <div class="label label-danger"><i class="fa fa-times"></i></div>
                             <?php } ?>
                       </td>
-                      <td><img src="<?php echo nl2br($slider1->slider_img)?>" class="img-responsive;" style="max-width:200px;max-height:200px;"/></td>
-                      <td>{{ $slider1->created_at }}</td>
+                      <td><img src="<?php echo nl2br($slider->image)?>" class="img-responsive;" style="max-width:200px;max-height:200px;"/></td>
+                      <td>{{ $slider->created_at }}</td>
+                      <td>{{ $slider->updated_at }}</td>
                       <td class="btn-group">
-                        <a href="{{ url('/admin/slider/'.$slider1->slider_id.'/edit') }}" title="Edit" data-toggle="tooltip" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
-                        <a href="#" title="Delete" data-toggle="tooltip" class="btn btn-danger btn-sm" onclick="if(confirm('Are you sure?')) location.href='{{ url('/admin/slider-delete/'.$slider1->slider_id.'') }}'"><i class="fa fa-times"></i></a>
+                        <form id="{{ $slider->id }}" action="{{ url('admin/sliders/'.$slider->id)}}" method="post">
+                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                          <input type="hidden" name="_method" value="DELETE">
+                          <a href="{{ url('/admin/sliders/'.$slider->id.'/edit') }}" title="Edit" data-toggle="tooltip" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                          <button type="button" class="btn btn-danger btn-sm" onclick="if(confirm('Are you sure?')){ $('#{{ $slider->id }}').submit() }"><i class="fa fa-times"></i></button>
+                        </form>
                       </td>
                     </tr>
                     @endforeach
@@ -80,8 +86,9 @@
                     <tr>
                       <th>ID</th>
                       <th>Enable</th>
-                      <th>Slider Image</th>
-                      <th>Created At</th>
+                      <th>Image</th>
+                      <th>Created at</th>
+                      <th>Updated at</th>
                       <th>Action</th>
                     </tr>
                   </tfoot>

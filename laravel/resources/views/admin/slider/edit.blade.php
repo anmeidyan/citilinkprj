@@ -20,9 +20,10 @@
         <div class="row">
             <div class="col-md-12 col-sm-12 box box-solid">
                 <div class="col-md-6 col-sm-6">
-                    <form class="form-horizontal" action="{{action('SliderController@update')}}" method="post">
+                    <form class="form-horizontal" action="{{ url('admin/slider/'.$slider->slider_id)}}" method="post">
                         <input type="hidden" name="_token" value="<?= csrf_token(); ?>">
                         <input type="hidden" name="slider_id" value="{{ $slider->slider_id }}">
+                        <input type="hidden" name="_method" value="PUT">
                         <div class="box-body">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Slider Image</label>
