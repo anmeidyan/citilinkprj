@@ -63,6 +63,6 @@ Route::group(['middleware' => 'superadmin'],function(){
     //SLIDER--------------------------------------------------------------------
     Route::resource('admin/sliders','Admin\SlidersController');
     //SETTING--------------------------------------------------------------------
-    Route::resource('admin/setting','SettingsController');
+    // Route::resource('admin/settings','Admin\SettingsController');
 
 });

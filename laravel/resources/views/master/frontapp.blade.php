@@ -27,7 +27,7 @@
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('assets/img/logo.png')}}" class="header-logo"/></a>
+                    <a class="navbar-brand" href="{{ url('/') }}"><img src="{{asset('assets/img/logo.png')}}" class="header-logo"/></a>
                     <a class="nav-toggle-btn hidden-sm hidden-md hidden-lg pull-right" style="padding-left: 20px;color:black;">
                         <i class="fa fa-bars fa-2x" style=" margin-top: 10px;padding-right:30px;"></i>
                     </a>

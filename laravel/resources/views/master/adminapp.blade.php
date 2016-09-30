@@ -50,7 +50,7 @@
 
         <header class="main-header">
             <!-- Logo -->
-            <a href="index2.html" class="logo">
+            <a href="{{ url('admin')}}" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>C</b>T</span>
                 <!-- logo for regular state and mobile devices -->
@@ -73,15 +73,15 @@
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <span class="hidden-xs">Alexander Pierce</span>
+                                <span class="hidden-xs">{{Auth::user()->name }}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                    <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                    <img src="{{ asset('assets/admin/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
                                     <p>
-                                        Alexander Pierce - Web Developer
-                                        <small>Member since Nov. 2012</small>
+                                        {{Auth::user()->name }}
+                                        <!-- <small>Member since Nov. 2012</small> -->
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
