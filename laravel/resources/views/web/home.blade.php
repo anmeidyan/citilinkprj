@@ -1,5 +1,6 @@
 @extends('master.frontapp')
 @section('content')
+<title>Citilink</title>
 
 <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
 <script src="{{ asset('assets/js/waypoints.min.js') }}"></script>
@@ -26,7 +27,6 @@
                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
                         <select class="form-control">
                             <option selected disabled>Pilih Area</option>
-                            <option value="option">Selokan</option>
                         </select>
                     </div>
                     <div class="input-group">
@@ -71,7 +71,7 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
 
 <div class="container">
     <div class="col-sm-12 home-title padding-0">
