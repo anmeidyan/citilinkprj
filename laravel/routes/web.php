@@ -13,6 +13,8 @@
 
 //------------------------------------------------------------------ FRONT START
 
+Auth::routes();
+
 Route::get('/', 'Web\HomeController@index');
 
 Route::get('/layanan', function () {
@@ -21,24 +23,36 @@ Route::get('/layanan', function () {
 Route::get('/pilihmobil', function () {
     return view('front.pilih');
 });
-//-------------------------------------------------------------------- FRONT END
 
-//------------------------------------------------------------------- BACK START
-Route::get('/admin', function () {
-    return view('admin.dashboard');
+Route::group(['middleware' => 'web','auth'],function(){
+
+
+
 });
 
-
-
+//-------------------------------------------------------------------- FRONT END
 /*
 |--------------------------------------------------------------------------
-| SLIDER
+| ADMIN
 |--------------------------------------------------------------------------
 */
-Route::resource('admin/sliders','Admin\SlidersController');
+
+Route::group(['middleware' => 'admin'],function(){
+
+});
 /*
-|--------------------------------------------------------------------------
-| SETTING
-|--------------------------------------------------------------------------
+|-------------------------------------------------------------------------------
+| SUPER ADMIN
+|-------------------------------------------------------------------------------
 */
-Route::resource('admin/setting','SettingsController');
+Route::group(['middleware' => 'superadmin'],function(){
+    //DASHBOARD--------------------------------------------------------------------
+    Route::get('/admin', function () {
+        return view('admin.dashboard');
+    });
+    //SLIDER--------------------------------------------------------------------
+    Route::resource('admin/sliders','Admin\SlidersController');
+    //SETTING--------------------------------------------------------------------
+    Route::resource('admin/setting','SettingsController');
+
+});
