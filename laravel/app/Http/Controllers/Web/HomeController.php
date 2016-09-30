@@ -17,7 +17,7 @@ class HomeController extends Controller
     public function index()
     {
         //Home
-        $sliders  = sliders::all();
+        $sliders  = sliders::where('enable','=',1)->get();
         return view('web.home',[
           'sliders' => $sliders
         ]);
