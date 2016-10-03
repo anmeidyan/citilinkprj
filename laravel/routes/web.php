@@ -53,8 +53,12 @@ Route::group(['middleware' => 'admin','superadmin'],function(){
     });
     //USERS---------------------------------------------------------------------
     Route::resource('admin/users','Admin\UsersController');
+    //BLOG----------------------------------------------------------------------
+    Route::resource('admin/blogs','Admin\BlogsController');
     //SLIDER--------------------------------------------------------------------
     Route::resource('admin/sliders','Admin\SlidersController');
+    //CAR-----------------------------------------------------------------------
+    Route::resource('admin/cars','Admin\CarsController');
     //SETTING-------------------------------------------------------------------
     Route::resource('admin/setting','Admin\SettingsController');
 });
