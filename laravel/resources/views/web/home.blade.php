@@ -26,8 +26,6 @@
                     <div class="input-group" style="margin-bottom:10px;margin-top:7px;">
                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
                         <select class="form-control" id="select-area">
-
-                            <option selected>Pilih Area</option>
                         </select>
                     </div>
                     <div class="input-group">

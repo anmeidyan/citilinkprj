@@ -18,6 +18,9 @@
 */
 Auth::routes();
 
+Route::get('getlogin','Web\AppController@getlogin');
+Route::get('getregist','Web\AppController@getregist');
+
 //------------------------------------------------------------------ FRONT START
 
 

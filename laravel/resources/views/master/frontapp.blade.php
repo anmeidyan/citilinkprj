@@ -22,6 +22,7 @@
 
 </head>
 <body id="myDiv">
+    <div class="loader"></div>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="col-sm-12 padding-0 header-head">
             <div class="container">
@@ -42,7 +43,7 @@
                         </li>
                         <li class="login-ul">
                             @if (Auth::guest())
-                            <a href="{{url('/login')}}"><i class="fa fa-user" aria-hidden="true"></i> Login</a>
+                            <a href="#" data-toggle="modal" data-target="#loginModal" onclick="getlogin()"><i class="fa fa-user" aria-hidden="true"></i> Login</a>
                             @else
                             <a href="{{url('/logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 <i class="fa fa-user" aria-hidden="true"></i> {{Auth::user()->name}}
@@ -141,6 +142,37 @@
     </nav>
     <!-- Sidebar End -->
 
+    <!-- Modal Start -->
+
+    <div id="loginModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <ul class="nav nav-pills">
+                        <li id="login"><a href="#" style="padding:10px 15px;" onclick="getlogin()">Login</a></li>
+                        <li id="register"><a href="#" style="padding:10px 15px;" onclick="getregist()">Register</a></li>
+                    </ul>
+                </div>
+                <div class="modal-body" id="changebody">
+                </div>
+                <div class="modal-footer">
+                    Dengan login ke akun Anda, Anda telah menyetujui Kebijakan Privasi Citilink
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal End -->
+
+    <script type="text/javascript">
+        $(window).load(function() {
+        	$(".loader").fadeOut("normal");
+        });
+    </script>
+
     <script type="text/javascript">
     $( window ).scroll(function() {
         if($(window).width() > 782){
@@ -175,12 +207,46 @@
     })();
     </script>
 
-<script type="text/javascript">
+    <script type="text/javascript">
     var today = new Date();
     $( ".datepick" ).datepicker({
         startDate: today,
     });
-</script>
+    </script>
+
+    <script type="text/javascript">
+    function getlogin(){
+        $('#login').addClass('active');
+        $('#register').removeClass('active');
+        $('#changebody').load('{{url('getlogin')}}');
+    }
+
+    function getregist(){
+        $('#register').addClass('active');
+        $('#login').removeClass('active');
+        $('#changebody').load('{{url('getregist')}}');
+    }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+              $(document).ajaxStart(function(){
+                  $('.loading').show();
+              })
+              .ajaxStop(function(){
+                  $('.loading').fadeOut("normal");
+              })
+              .ajaxComplete(function(){
+                  $('.loading').fadeOut("normal");
+              })
+              .ajaxError(function(){
+                  $('.loading').fadeOut("normal");
+              })
+              .ajaxSuccess(function(){
+                  $('.loading').fadeOut("normal");
+              });
+          })
+      </script>
 
 </body>
 </html>
