@@ -11,14 +11,15 @@
     <link href="{{ asset('assets\font-awesome-4.6.1\css\font-awesome.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/owl.carousel.2/assets/owl.carousel.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/datepicker3.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/datepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
 
 
     <!-- jQuery -->
     <script src="{{ asset('assets/js/jquery-2.2.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/owl.carousel.2/owl.carousel.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('assets/datepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
 
 </head>
 <body id="myDiv">
@@ -51,7 +52,9 @@
                                 {{ csrf_field() }}
                             </form>
                             @endif
-                            <a href="#" class="supergreen-nav"><span style="color:#65b32e;">SUPER</span><span style="color:#008c3c;">GREEN</span></a>
+                            @if (Auth::check())
+                            <a href="#" class="supergreen-nav"><span style="color:#65b32e;">{{Auth::user()->name}}</span></a>
+                            @endif
                         </li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
@@ -61,7 +64,7 @@
             <ul class="nav nav-tabs nav-justified">
                 <li><a href="#"><img src="{{asset('assets/img/pesawat.png')}}"/> <span>Flight</span></a></li>
                 <li><a href="#"><img src="{{asset('assets/img/hotel.png')}}"/> <span>Hotel</span></a></li>
-                <li><a href="{{url('/select-car')}}"><img src="{{asset('assets/img/mobil.png')}}"/> <span>Cars</span></a></li>
+                <li><a href="{{url('cars')}}"><img src="{{asset('assets/img/mobil.png')}}"/> <span>Cars</span></a></li>
                 <li><a href="#"><img src="{{asset('assets/img/store.png')}}"/> <span>Store</span></a></li>
             </ul>
         </div>
@@ -177,9 +180,17 @@
 
 <script type="text/javascript">
     var today = new Date();
+
     $( ".datepick" ).datepicker({
         startDate: today,
     });
+
+
+// $(function() {
+//    $('#datetimepicker1').datetimepicker({
+//      language: 'pt-BR'
+//    });
+//  });
 </script>
 
 </body>

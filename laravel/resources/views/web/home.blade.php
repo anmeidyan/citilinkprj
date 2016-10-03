@@ -20,39 +20,51 @@
     </ul>
     <div class="tab-content">
         <div id="find" class="tab-pane fade in active">
+          <form action="{{ url('cars')}}" method="post">
+            {{ csrf_field() }}
             <div class="col-sm-12 bg-find">
                 <div class="col-sm-12 col-md-5 spacing-book" style="text-align:left;">
                     <span>Area Penjemputan & Detail Alamat</span><br>
                     <div class="input-group" style="margin-bottom:10px;margin-top:7px;">
                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-                        <select class="form-control" id="select-area">
-
+                        <select class="form-control" id="select-area" required>
                             <option selected>Pilih Area</option>
                         </select>
+                        <input type="hidden" name="cityId">
+                        <input type="hidden" name="city">
+                        <script>
+                          $('#select-area').change(function() {
+                            var cityId  = $("#select-area option:selected").attr("data-id");
+                            var city    = $('#select-area').val();
+                            $('[name=cityId]').val(cityId);
+                            $('[name=city]').val(city);
+                          });
+                        </script>
                     </div>
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-home" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" placeholder="Contoh: No.Rumah / Gedung / dll" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Contoh: No.Rumah / Gedung / dll" aria-describedby="basic-addon1" name="address">
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-4" style="text-align:left;">
                     <span>Waktu Penjemputan & Pengembalian</span><br>
                     <div class="input-group" style="margin-bottom:10px;margin-top:7px;">
                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control datepick" placeholder="Tanggal Pergi">
+                        <input type="text" class="form-control datepick" placeholder="Tanggal Pergi" name="pickUpTime" value="25 September 2016 07:00:00" required>
                     </div>
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control datepick" placeholder="Tanggal Pulang">
+                        <input type="text" class="form-control datepick" placeholder="Tanggal Pulang" name="dropOffTime" value="25 September 2016 10:00:00" required>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-2" style="text-align:left;padding-right:0;">
                     <br>
-                    <button class="btn-book btn-default">
+                    <button type="submit" class="btn-book btn-default">
                         Search Cars <img src="{{asset('assets/img/mobilwhite.png')}}" style="width:34px;height:34px;"/>
                     </button>
                 </div>
             </div>
+          </form>
         </div>
         <div id="manage" class="tab-pane fade">
             <div class="col-sm-12 bg-find">

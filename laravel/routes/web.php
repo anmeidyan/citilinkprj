@@ -26,7 +26,9 @@ Route::post('getcity', 'Web\HomeController@getcity');
 
 
 Route::get('services', 'Web\ServicesController@index');
-Route::get('select-car', 'Web\SelectCarController@index');
+Route::get('cars', 'Web\CarsController@index');
+Route::post('cars', 'Web\CarsController@searchcar');
+Route::post('cars/available', 'Web\CarsController@carsavailable');
 
 
 Route::group(['middleware' => 'web','auth'],function(){
@@ -46,8 +48,9 @@ Route::group(['middleware' => 'web','auth'],function(){
 Route::group(['middleware' => 'admin','superadmin'],function(){
     //DASHBOARD-----------------------------------------------------------------
     Route::get('/admin', function () {
-        return view('admin.dashboard');
+        return Redirect('admin/dashboard');
     });
+    Route::get('admin/dashboard', 'Admin\DashboardController@index');
     //USERS---------------------------------------------------------------------
     Route::resource('admin/users','Admin\UsersController');
     //SLIDER--------------------------------------------------------------------
