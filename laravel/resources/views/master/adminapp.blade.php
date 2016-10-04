@@ -44,6 +44,14 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <style media="screen">
+        .alert-dismissable{
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    </style>
+
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -92,7 +100,12 @@
                                         <a href="#" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="{{url('/logout')}}" class="btn btn-default btn-flat" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                            Sign out
+                                        </a>
+                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
                                     </div>
                                 </li>
                             </ul>
@@ -138,12 +151,12 @@
         </li>
         <li>
             <a href="{{url('/admin/blogs')}}">
-                <i class="fa fa-users"></i> <span>Blog</span>
+                <i class="fa fa-server"></i> <span>Blog</span>
             </a>
         </li>
         <li>
             <a href="{{url('/admin/cars')}}">
-                <i class="fa fa-users"></i> <span>Cars</span>
+                <i class="fa fa-truck"></i> <span>Cars</span>
             </a>
         </li>
     </ul>

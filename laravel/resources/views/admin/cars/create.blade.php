@@ -24,15 +24,15 @@
                         <input type="hidden" name="_token" value="<?= csrf_token(); ?>">
                         <div class="box-body">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label" style="padding-top:0px;">Name</label>
+                                <label class="col-sm-3 control-label" style="padding-top:0px;">ID Type</label>
                                 <div class="col-sm-9">
-                                    <input type="text" name="name" placeholder="Name" class="form-control">
+                                    <input type="text" name="type_id" placeholder="ID Type" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label" style="padding-top:0px;">Seat</label>
+                                <label class="col-sm-3 control-label" style="padding-top:0px;">Name</label>
                                 <div class="col-sm-9">
-                                    <input type="number" name="seat" min="1" value="1">
+                                    <input type="text" name="name" placeholder="Name" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -58,7 +58,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Image</label>
                                 <div class="col-sm-9">
-                                    <a href="{{asset('assets/filemanager/dialog.php?type=1&field_id=img')}}" class="btn iframe-btn btn-success" type="button" style="margin-bottom:10px;"><i class="ion ion-android-camera"> Slider Image</i></a><br/>
+                                    <a href="{{asset('assets/filemanager/dialog.php?type=1&field_id=img')}}" class="btn iframe-btn btn-success" type="button" style="margin-bottom:10px;"><i class="ion ion-android-camera"> Image</i></a><br/>
                                     <img src="" id="previmg" class="img-responsive" style="max-width:500px;max-height:500px;"/><br/>
                                     <input type="hidden" name="image" class="form-control" id="img">
                                 </div>

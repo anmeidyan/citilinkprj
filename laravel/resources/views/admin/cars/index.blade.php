@@ -47,24 +47,22 @@
                 <table class="table table-bordered table-striped" id="example1">
                   <thead>
                     <tr>
-                      <th>ID</th>
+                      <th>ID Type</th>
                       <th>Name</th>
-                      <th>Image</th>
-                      <th>Seat</th>
                       <th>Transmition</th>
                       <th>Gas</th>
+                      <th>Image</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     @foreach($cars as $car)
                     <tr>
-                      <td>{{ $car->id }}</td>
+                      <td>{{ $car->type_id }}</td>
                       <td>{{ $car->name}}</td>
-                      <td><img src="<?php echo nl2br($car->image)?>" class="img-responsive;" style="max-width:200px;max-height:200px;"/></td>
-                      <td>{{ $car->seat }}</td>
                       <td>{{ $car->transmition }}</td>
                       <td>{{ $car->gas }}</td>
+                      <td><img src="<?php echo nl2br($car->image)?>" class="img-responsive;" style="max-width:200px;max-height:200px;"/></td>
                       <td class="btn-group">
                         <form id="{{ $car->id }}" action="{{ url('admin/cars/'.$car->id)}}" method="post">
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -80,10 +78,9 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Image</th>
-                        <th>Seat</th>
                         <th>Transmition</th>
                         <th>Gas</th>
+                        <th>Image</th>
                         <th>Action</th>
                     </tr>
                   </tfoot>

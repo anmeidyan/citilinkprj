@@ -25,15 +25,15 @@
                         <input type="hidden" name="_method" value="PUT">
                         <div class="box-body">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label" style="padding-top:0px;">Name</label>
+                                <label class="col-sm-3 control-label" style="padding-top:0px;">ID Type</label>
                                 <div class="col-sm-9">
-                                    <input type="text" name="name" placeholder="Name" value="{{$cars->id}}">
+                                    <input type="text" name="type_id" placeholder="ID Type" value="{{$cars->type_id}}" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label" style="padding-top:0px;">Seat</label>
+                                <label class="col-sm-3 control-label" style="padding-top:0px;">Name</label>
                                 <div class="col-sm-9">
-                                    <input type="number" name="seat" value="{{$cars->seat}}">
+                                    <input type="text" name="name" placeholder="Name" value="{{$cars->id}}">
                                 </div>
                             </div>
                             <div class="form-group">

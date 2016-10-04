@@ -39,7 +39,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <br>
+                            @if (Auth::check())<br>@endif
                             <a href="#">Info Penerbangan</a>
                         </li>
                         <li class="login-ul">
@@ -47,7 +47,7 @@
                             <a href="#" data-toggle="modal" data-target="#loginModal" onclick="getlogin()"><i class="fa fa-user" aria-hidden="true"></i> Login</a>
                             @else
                             <a href="{{url('/logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                <i class="fa fa-user" aria-hidden="true"></i> {{Auth::user()->name}}
+                                <i class="fa fa-user" aria-hidden="true"></i> Log Out
                             </a>
                             <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}

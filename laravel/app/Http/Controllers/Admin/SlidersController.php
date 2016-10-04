@@ -134,7 +134,7 @@ class SlidersController extends Controller
           $sliders->save();
 
 
-          return redirect('/admin/sliders')->with('success', 'successfully updated data');
+          return redirect('/admin/sliders')->with('edit', 'successfully updated data');
         }
     }
 
@@ -151,6 +151,6 @@ class SlidersController extends Controller
        $sliders->delete();
 
        // redirect
-       return redirect('/admin/sliders')->with('success', 'successfully deleted data');
+       return redirect('/admin/sliders')->with('delete', 'successfully deleted data');
     }
 }
