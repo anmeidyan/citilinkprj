@@ -136,6 +136,16 @@
                 <i class="fa fa-users"></i> <span>User</span>
             </a>
         </li>
+        <li>
+            <a href="{{url('/admin/blogs')}}">
+                <i class="fa fa-users"></i> <span>Blog</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{url('/admin/cars')}}">
+                <i class="fa fa-users"></i> <span>Cars</span>
+            </a>
+        </li>
     </ul>
 </section>
 <!-- /.sidebar -->
@@ -375,6 +385,22 @@ $('#rupiah').priceFormat({
     centsLimit: false,
     centsSeparator: '',
     thousandsSeparator: '.'
+});
+</script>
+
+<script type="text/javascript">
+tinymce.init({
+    selector: '.texteditor',
+    plugins      : ["advlist autolink lists textcolor link image charmap print preview anchor", "searchreplace visualblocks code fullscreen", "insertdatetime media table contextmenu paste responsivefilemanager"],
+    toolbar      : "insertfile undo redo | styleselect fontsizeselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image responsivefilemanager",
+    image_advtab : true,
+    relative_urls: false,
+
+    external_filemanager_path:"{!! str_finish(asset('assets/filemanager'),'/') !!}",
+    filemanager_title        :"File Manager" , // bisa diganti terserah anda
+    external_plugins         : { "filemanager" : "{{ asset('assets/filemanager/plugin.min.js') }}"},
+    fontsize_formats: '8pt 10pt 12pt 14pt 18pt 20pt 22pt 24pt 30pt 36pt',
+    height:300
 });
 </script>
 

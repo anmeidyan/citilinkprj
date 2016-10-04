@@ -27,8 +27,12 @@
                     <span>Area Penjemputan & Detail Alamat</span><br>
                     <div class="input-group" style="margin-bottom:10px;margin-top:7px;">
                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+<<<<<<< HEAD
                         <select class="form-control" id="select-area" required>
                             <option selected>Pilih Area</option>
+=======
+                        <select class="form-control" id="select-area">
+>>>>>>> bbb814f4ac7a6e38692643e0f06561a59847d0f7
                         </select>
                         <input type="hidden" name="cityId">
                         <input type="hidden" name="city">

@@ -18,6 +18,17 @@
 	border: 2px solid #ccc;
 }
 
+.loader {
+	position: fixed;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('../img/loading.gif') 50% 50% no-repeat rgb(249,249,249);
+}
+
 .navbar{
     border-radius: 0px;
     border-color: transparent;
@@ -361,6 +372,76 @@
     position:absolute;
     z-index:99;
     top: 485px;
+}
+
+.modal-footer{
+	text-align:center;
+	color:#9C9C9C;
+	font-size:12px;
+	border-top: 1px solid #fff;
+	padding: 15px 0px;
+	margin: 0px 15px;
+}
+
+.modal-body {
+    position: relative;
+    padding: 15px 0px;
+	margin: 0px 15px;
+	background-color: #fff;
+}
+
+.modal-header {
+    padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-left: 15px;
+	margin-right: 15px;
+    border-bottom: 1px solid #fff;
+}
+
+.modal-content {
+    border-radius: 0px;
+	background-color: #F1F1F1;
+}
+
+.nav-pills>li+li {
+    margin-left: 0px;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    color: #000;
+    background-color: #fff;
+}
+
+.modal-content{
+	border-radius: 0px;
+}
+
+.nav>li {
+    background-color: #fff;
+}
+
+#login{
+	background-color: #F1F1F1;
+}
+
+#register{
+	background-color: #F1F1F1;
+}
+
+.btn-primary{
+	background-color: #53B048;
+	border: 1px solid #53B048;
+	border-radius: 0px;
+}
+
+.gif-ajax{
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('assets/img/loading.gif') 50% 50% no-repeat rgb(249,249,249);
 }
 
 @media (max-width: 767px) {

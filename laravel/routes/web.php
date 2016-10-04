@@ -18,6 +18,9 @@
 */
 Auth::routes();
 
+Route::get('getlogin','Web\AppController@getlogin');
+Route::get('getregist','Web\AppController@getregist');
+
 //------------------------------------------------------------------ FRONT START
 
 
@@ -53,8 +56,12 @@ Route::group(['middleware' => 'admin','superadmin'],function(){
     Route::get('admin/dashboard', 'Admin\DashboardController@index');
     //USERS---------------------------------------------------------------------
     Route::resource('admin/users','Admin\UsersController');
+    //BLOG----------------------------------------------------------------------
+    Route::resource('admin/blogs','Admin\BlogsController');
     //SLIDER--------------------------------------------------------------------
     Route::resource('admin/sliders','Admin\SlidersController');
+    //CAR-----------------------------------------------------------------------
+    Route::resource('admin/cars','Admin\CarsController');
     //SETTING-------------------------------------------------------------------
     Route::resource('admin/setting','Admin\SettingsController');
 });
