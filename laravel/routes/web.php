@@ -33,10 +33,14 @@ Route::post('getcity', 'Web\HomeController@getcity');
 Route::get('cars', 'Web\CarsController@index');
 Route::post('cars', 'Web\CarsController@searchcar');
 Route::post('cars/api/available', 'Web\CarsController@apicars');
+Route::post('cars/prepare_addon', 'Web\CarsController@prepare_addon');
 //CARS ADDON--------------------------------------------------------------------
-Route::get('cars/{carTypeId}/add-on', 'Web\AddOnController@index');
+Route::get('cars/add-on', 'Web\AddOnController@index');
 Route::post('cars/api/addon', 'Web\AddOnController@apiaddon');
-
+Route::post('cars/prepare_payment', 'Web\AddOnController@prepare_payment');
+//CARS PAYMENT--------------------------------------------------------------------
+Route::get('cars/payment', 'Web\PaymentController@index');
+Route::post('cars/payment', 'Web\PaymentController@dopayment');
 
 Route::group(['middleware' => 'web','auth'],function(){
 

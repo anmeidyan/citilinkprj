@@ -216,16 +216,7 @@
     $( ".datepick" ).datepicker({
         startDate: today,
     });
-<<<<<<< HEAD
 
-
-// $(function() {
-//    $('#datetimepicker1').datetimepicker({
-//      language: 'pt-BR'
-//    });
-//  });
-</script>
-=======
     </script>
 
     <script type="text/javascript">
@@ -261,7 +252,6 @@
               });
           })
       </script>
->>>>>>> bbb814f4ac7a6e38692643e0f06561a59847d0f7
 
 </body>
 </html>

@@ -1,13 +1,13 @@
 @extends('master.frontapp')
 @section('content')
-<title>Citilink | Services</title>
+<title>Citilink | Add on</title>
 
 <link href="{{ asset('assets/css/stylesyehbi.css') }}" rel="stylesheet">
 <br>
 <br>
 <div class="container"><br><br>
-  <input type="text" name="carTypeId" value="{{ $carTypeId }}">
-  <input type="text" name="carType" value="{{ $carType }}">
+  <input type="hidden" name="carTypeId" value="{{ Session::get('cityId') }}">
+  <input type="hidden" name="carType" value="{{ Session::get('city') }}">
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1 ">
       <div class="row bs-wizard" style="border-bottom:0;">
@@ -57,7 +57,7 @@
           <tr>
           <td colspan="" rowspan="" headers=""><img src="{{asset('assets/img/img2/jemput.png')}}" alt=""></td>
             <td>Waktu Penjemputan</td>
-            <td colspan="" rowspan="" headers="" style="padding-left: 17px;color: #32bb4c; font-weight: bold;">: 11-03-2016 06:00</td>
+            <td colspan="" rowspan="" headers="" style="padding-left: 17px;color: #32bb4c; font-weight: bold;">: {{ Session::get('pickUpTime') }}</td>
           </tr>
         </tbody>
       </table>
@@ -66,7 +66,7 @@
           <tr>
           <td colspan="" rowspan="" headers=""><img src="{{asset('assets/img/img2/jam.png')}}" alt=""></td>
             <td>Waktu Pengembalian</td>
-            <td colspan="" rowspan="" headers="" style="padding-left: 10px;color: #32bb4c; font-weight: bold;">: 24-03-2016 18.00</td>
+            <td colspan="" rowspan="" headers="" style="padding-left: 10px;color: #32bb4c; font-weight: bold;">: {{ Session::get('dropOffTime') }}</td>
           </tr>
         </tbody>
       </table>
@@ -74,11 +74,12 @@
     <div class="col-sm-4">
       <h4 style="margin-bottom: 15px;">Harga Sewa Mobil</h4>
       <div class="product--price">
-        <span class="product--price_price"><p class="harga">IDR . 320.000</p></span>
+        <span class="product--price_price"><p class="harga">IDR {{ Session::get('carRatesPerHour') }}</p></span>
       </div>
     </div>
 
-    </div> <!-- row -->
+    </div> 
+    <!-- row -->
       <div class="row ">
         <div class="col-sm-12">
           <hr>
@@ -93,7 +94,7 @@
           <img src="{{asset('assets/img/img2/Visa_logo.png')}}" alt="" width="75" height="30"> <img src="{{asset('assets/img/img2/mastercard.png')}}" alt="" width="50" height="30"><img src="{{asset('assets/img/img2/doku-logo.png')}}" alt="" width="30" height="30">
         </div>
         <div class="col-sm-6 pesan-button">
-        <button type="submit" value="Pesan" class="btn green-sea-flat-button">Pesan</button>
+              <a href="{{ url('cars/payment')}}" class="btn green-sea-flat-button">Pesan</a>
         </div>
         </div><!-- ROW BUTTON-->
       </div>

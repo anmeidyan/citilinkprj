@@ -15,14 +15,10 @@ class AddOnController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($carTypeId)
+    public function index()
     {
       # code...
-      // $sliders  = sliders::where('enable','=',1)->get();
-      return view('web.cars.add-on',[
-        'carTypeId' => $carTypeId,
-        'carType' => ""
-      ]);
+      return view('web.cars.add-on');
     }
     public function apiaddon()
     {
@@ -50,33 +46,47 @@ class AddOnController extends Controller
       $info = curl_getinfo($ch);
       curl_close($ch);
       $data = json_decode($output);
+      if(count($data) == 0){
+        echo "<div class='col-sm-12'><p class='help-block'>No Addon Available</p></div>";
+      }else{
 
-      foreach ($data as $d) {
-        echo "<div class='col-sm-4'>
-          <div class='row'>
-            <div class='col-xs-5 col-sm-4 img-icon'>
-            ";
-            if($d->addonId == 1 ){
-                echo "<img src='".asset('assets/img/addon/bottle.png')."' alt='' align='center'>";
-            }else if($d->addonId == 2){
-                echo "<img src='".asset('assets/img/addon/popcorn.png')."' alt='' align='center'>";
-            }else if($d->addonId ==3){
-                echo "<img src='".asset('assets/img/addon/magazine.png')."' alt='' align='center'>";
-            }
-            echo "</div>
-            <div class='col-xs-7 col-sm-8'>
-              <p class='tambahan'>".$d->addon."</p>
-              <p class='tambahan1'>(&commat;IDR ".$d->addonValue.")</p>
-              <select name='' id='' class='option form-control'>
-                <option value='1'>1</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
-                <option value='4'>4</option>
-              </select>
-            </div>
-            </div><!-- img -->
-          </div>";
+        foreach ($data as $d) {
+          echo "<div class='col-sm-4'>
+            <div class='row'>
+              <div class='col-xs-5 col-sm-4 img-icon'>
+              ";
+              if($d->addonId == 1 ){
+                  echo "<img src='".asset('assets/img/addon/bottle.png')."' alt='' align='center'>";
+              }else if($d->addonId == 2){
+                  echo "<img src='".asset('assets/img/addon/popcorn.png')."' alt='' align='center'>";
+              }else if($d->addonId ==3){
+                  echo "<img src='".asset('assets/img/addon/magazine.png')."' alt='' align='center'>";
+              }
+              echo "</div>
+              <div class='col-xs-7 col-sm-8'>
+                <p class='tambahan'>".$d->addon."</p>
+                <p class='tambahan1'>(&commat;IDR ".$d->addonValue.")</p>
+                <select name='' id='' class='option form-control'>
+                  <option value='1'>1</option>
+                  <option value='2'>2</option>
+                  <option value='3'>3</option>
+                  <option value='4'>4</option>
+                  <option value='5'>5</option>
+                  <option value='6'>6</option>
+                  <option value='7'>7</option>
+                  <option value='8'>8</option>
+                  <option value='9'>9</option>
+                  <option value='10'>10</option>
+                </select>
+              </div>
+              </div><!-- img -->
+            </div>";
+        }
       }
+    }
+    public function prepare_payment()
+    {
+      # code...
 
     }
 }

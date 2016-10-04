@@ -1,16 +1,17 @@
 @extends('master.frontapp')
 @section('content')
+<title>Citilink | Cars</title>
 
 <link href="{{ asset('assets/css/stylesyehbi.css') }}" rel="stylesheet">
 <br>
 <br>
 <div class="container"><br><br>
-  <?php if(!empty($cityId)){?>
-    <input type="hidden" name="cityId" value="{{ $cityId }}">
-    <input type="hidden" name="city" value="{{ $city }}">
-    <input type="hidden" name="address" value="{{ $address }}">
-    <input type="hidden" name="pickUpTime" value="{{ $pickUpTime }}">
-    <input type="hidden" name="dropOffTime" value="{{ $dropOffTime }}">
+  <?php if(!empty(Session::get('cityId'))){?>
+    <input type="hidden" name="cityId" value="{{ Session::get('cityId') }}">
+    <input type="hidden" name="city" value="{{ Session::get('city') }}">
+    <input type="hidden" name="address" value="{{ Session::get('address') }}">
+    <input type="hidden" name="pickUpTime" value="{{ Session::get('pickUpTime') }}">
+    <input type="hidden" name="dropOffTime" value="{{ Session::get('dropOffTime') }}">
   <?php } ?>
 
           <div class="row">

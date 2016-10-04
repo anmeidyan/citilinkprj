@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\sliders;
+use Session;
 
 class HomeController extends Controller
 {
@@ -16,6 +17,16 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        Session::forget('cityId');
+        Session::forget('city');
+        Session::forget('address');
+        Session::forget('pickUpTime');
+        Session::forget('dropOffTime');
+
+        Session::forget('carTypeId');
+        Session::forget('carType');
+        Session::forget('carRatesPerHour');
         //Home
         $sliders  = sliders::where('enable','=',1)->get();
         return view('web.home',[
@@ -40,7 +51,7 @@ class HomeController extends Controller
       $info = curl_getinfo($ch);
       curl_close($ch);
       $data = json_decode($output);
-      
+
         echo "<option value='' data-id='' selected disabled>Pilih Area</option>";
       foreach ($data as $d) {
         echo "<option value='".$d->city."' data-id='".$d->cityId."'>".$d->city."</option>";

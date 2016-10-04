@@ -43,7 +43,7 @@
                     </div>
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-home" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" placeholder="Contoh: No.Rumah / Gedung / dll" aria-describedby="basic-addon1" name="address">
+                        <input type="text" class="form-control" placeholder="Contoh: No.Rumah / Gedung / dll" aria-describedby="basic-addon1" name="pickUpAddress">
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-4" style="text-align:left;">
