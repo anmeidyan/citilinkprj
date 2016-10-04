@@ -44,7 +44,7 @@ class CarsController extends Controller
     public function store()
     {
         $rules = [
-            'seat'    => 'required',
+            'type_id' => 'required',
             'name'    => 'required',
             'trans'    => 'required',
             'gas'    => 'required',
@@ -58,19 +58,19 @@ class CarsController extends Controller
         } else {
 
             $now    = new DateTime();
-            $seat  = Input::get('seat');
+            $type  = Input::get('type_id');
             $name  = Input::get('name');
             $trans  = Input::get('trans');
             $gas  = Input::get('gas');
             $image  = Input::get('image');
 
             $cars = new cars;
-            $cars->seat        = $seat;
-            $cars->name        = $name;
-            $cars->transmition = $trans;
-            $cars->gas        = $gas;
-            $cars->image         = $image;
-            $cars->created_at    = $now;
+            $cars->type_id      = $type;
+            $cars->name         = $name;
+            $cars->transmition  = $trans;
+            $cars->gas          = $gas;
+            $cars->image        = $image;
+            $cars->created_at   = $now;
             $cars->save();
 
             return redirect('admin/cars')->with('success', 'successfully created data');
@@ -113,7 +113,7 @@ class CarsController extends Controller
     public function update($id)
     {
         $rules = [
-            'seat'    => 'required',
+            'type_id'  => 'required',
             'name'    => 'required',
             'trans'    => 'required',
             'gas'    => 'required',
@@ -127,14 +127,14 @@ class CarsController extends Controller
         } else {
 
             $now    = new DateTime();
-            $seat  = Input::get('seat');
+            $type  = Input::get('type_id');
             $name  = Input::get('name');
             $trans  = Input::get('trans');
             $gas  = Input::get('gas');
             $image  = Input::get('image');
 
             $cars = cars::find($id);
-            $cars->seat        = $seat;
+            $cars->type_id     = $type;
             $cars->name        = $name;
             $cars->transmition = $trans;
             $cars->gas        = $gas;

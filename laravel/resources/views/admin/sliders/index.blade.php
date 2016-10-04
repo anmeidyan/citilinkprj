@@ -24,22 +24,22 @@
             <li class="pull-right"><a href="{{ url('/admin/sliders/create') }}"><i class="fa fa-plus" aria-hidden="true"></i> Add Slider</a></li>
             <!-- <li><a href="{{ url('/admin/product/product-category') }}">Product Category</a></li> -->
           </ul>
-          @if(Session::has('success-addslide'))
+          @if(Session::has('success'))
               <div class="alert alert-success alert-dismissable">
                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                  {{ Session::get('success-addslide') }}
+                  {{ Session::get('success') }}
               </div>
            @endif
-           @if(Session::has('success-delslide'))
+           @if(Session::has('delete'))
                <div class="alert alert-danger alert-dismissable">
                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                   {{ Session::get('success-delslide') }}
+                   {{ Session::get('delete') }}
                </div>
             @endif
-            @if(Session::has('success-editslide'))
+            @if(Session::has('edit'))
                 <div class="alert alert-warning alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    {{ Session::get('success-editslide') }}
+                    {{ Session::get('edit') }}
                 </div>
              @endif
           <div class="tab-content" style="overflow: auto">

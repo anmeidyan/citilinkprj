@@ -49,9 +49,9 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Enable</th>
-                                    <th>Image</th>
                                     <th>Title</th>
                                     <th>Description</th>
+                                    <th>Image</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -68,9 +68,9 @@
                                                 <div class="label label-danger"><i class="fa fa-times"></i></div>
                                                 <?php } ?>
                                             </td>
-                                            <td><img src="<?php echo nl2br($blog->image)?>" class="img-responsive;" style="max-width:200px;max-height:200px;"/></td>
                                             <td>{{ $blog->title }}</td>
                                             <td>{{ $blog->description }}</td>
+                                            <td><img src="<?php echo nl2br($blog->image)?>" class="img-responsive;" style="max-width:100px;max-height:100px;"/></td>
                                             <td class="btn-group">
                                                 <form id="{{ $blog->id }}" action="{{ url('admin/blogs/'.$blog->id)}}" method="post">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -86,9 +86,9 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Enable</th>
-                                            <th>Image</th>
                                             <th>Title</th>
                                             <th>Description</th>
+                                            <th>Image</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
