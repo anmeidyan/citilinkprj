@@ -78,7 +78,7 @@ var postData =
             }
 $.ajax({
   type: "POST",
-  url: "{{ url('cars/available')}}",
+  url: "{{ url('cars/api/available')}}",
   data: postData,
   success: function (data){
     $('#cars').html(data);

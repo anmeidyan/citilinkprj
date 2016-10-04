@@ -19,7 +19,7 @@ class CarsController extends Controller
     {
         //Home
         // $sliders  = sliders::where('enable','=',1)->get();
-        return view('web.cars',[
+        return view('web.cars.index',[
           // 'sliders' => $sliders
         ]);
     }
@@ -33,7 +33,7 @@ class CarsController extends Controller
       $pickUpTime   = Input::get('pickUpTime');
       $dropOffTime  = Input::get('dropOffTime');
 
-      return view('web.cars',[
+      return view('web.cars.index',[
         'cityId'      => $cityId,
         'city'        => $city,
         'address'     => $address,
@@ -41,7 +41,7 @@ class CarsController extends Controller
         'dropOffTime' => $dropOffTime,
       ]);
     }
-    public function carsavailable() //Post API
+    public function apicars() //Post API
     {
       $cityId       = Input::get('cityId');
       $city         = Input::get('city');
@@ -79,19 +79,18 @@ class CarsController extends Controller
       foreach ($data as $d) {
         # code...
         echo  "<div class='col-md-4 col-sm-6 hover' style='margin-top:20px;'>
-        <img src='assets/img/img2/mobil.png' class='img-responsive' />
+        <img src='".asset('assets/img/img2/mobil.png')."' class='img-responsive' />
         <p class='judul-pilih1'>".$d->carType."</p>
         <ul class='colourswatches'>
         <div class='col-xs-3' style='margin-top: -15px;'><p style='color: white;'><i class='fa fa-users'>  ".$d->carSeat."</i></p></div>
-        <div class='col-xs-5' style='margin-top: -15px;'><p style='color: white;'><img src='assets/img/img2/gigi.png' alt='' height='15px' width='20px'> Automatic</p></div>
-        <div class='col-xs-4' style='margin-top: -15px; padding-right:1px; padding-left: 2px;'><p style='color: white;'><img src='assets/img/img2/premium.png' alt='' height='17px' width='20px'> Pertamax</p></div>
+        <div class='col-xs-5' style='margin-top: -15px;'><p style='color: white;'><img src='".asset('assets/img/img2/gigi.png')."' alt='' height='15px' width='20px'> Automatic</p></div>
+        <div class='col-xs-4' style='margin-top: -15px; padding-right:1px; padding-left: 2px;'><p style='color: white;'><img src='".asset('assets/img/img2/premium.png')."' alt='' height='17px' width='20px'> Pertamax</p></div>
         </ul>
         <p class='judul-pilih'>Harga Mobil</p>
         <p class='judul-pilih'>Lama Sewa : 150 jam</p>
         <div class='col-xs-8 harga-pilih'>IDR ".$d->carRatesPerHour."</div>
-        <div class='col-xs-4'><a href='{{url('/services')}}'><button class='btn green-sea-pesan'>Pesan</button></a></div>
+        <div class='col-xs-4'><a href='".url('cars/'.$d->carTypeId."/add-on")."'><button class='btn green-sea-pesan'>Pesan</button></a></div>
         </div>";
       }
-
     }
 }

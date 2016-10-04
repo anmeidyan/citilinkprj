@@ -6,6 +6,8 @@
 <br>
 <br>
 <div class="container"><br><br>
+  <input type="text" name="carTypeId" value="{{ $carTypeId }}">
+  <input type="text" name="carType" value="{{ $carType }}">
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1 ">
       <div class="row bs-wizard" style="border-bottom:0;">
@@ -77,74 +79,45 @@
     </div>
 
     </div> <!-- row -->
-    <div class="row ">
-      <div class="col-sm-12">
-        <hr>
-        <h4 style="color: #32bb4c; font-weight: bold; margin-bottom: 20px;">Pilih Layanan Tambahan Service</h4>
-      </div>
-      <div class="col-sm-4">
-        <div class="row">
-          <div class="col-xs-5 col-sm-4 img-icon">
-            <img src="{{asset('assets/img/img2/botol.png')}}" alt="" align="center">
-          </div>
-          <div class="col-xs-7 col-sm-8">
-            <p class="tambahan">Mineral Water</p>
-            <p class="tambahan1">(&commat;IDR 4,000)</p>
-            <select name="" id="" class="option form-control">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
-          </div>
-          </div><!-- img -->
+      <div class="row ">
+        <div class="col-sm-12">
+          <hr>
+          <h4 style="color: #32bb4c; font-weight: bold; margin-bottom: 20px;">Pilih Layanan Tambahan Service</h4>
         </div>
-        <div class="col-sm-4">
-          <div class="row">
-            <div class="col-xs-5 col-sm-4 img-icon">
-              <img src="{{asset('assets/img/img2/jagung.png')}}" alt="" align="center">
-            </div>
-            <div class="col-xs-7 col-sm-8">
-              <p class="tambahan">Snack</p>
-              <p class="tambahan1">(&commat;IDR 8,000)</p>
-              <select name="" id="" class="option form-control">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-            </div>
-            </div><!-- img -->
-          </div>
-          <div class="col-sm-4">
-            <div class="row">
-              <div class="col-xs-5 col-sm-4 img-icon ">
-                <img src="{{asset('assets/img/img2/koran.png')}}" alt="" class="">
-              </div>
-              <div class="col-xs-7 col-sm-8">
-                <p class="tambahan">Magazine</p>
-                <p class="tambahan1">(&commat;IDR 0)</p>
-                <select name="" id="" class="option form-control">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                </select>
-              </div>
-              </div><!-- img -->
-            </div>
-            </div><!-- row layanan -->
-            <div class="row">
-              <div class="col-sm-6">
-                <h5 style="margin-top: 15px; margin-bottom: 15px @media screen and (min-width: 768px)">Payment with :</h5>
-                <img src="{{asset('assets/img/img2/Visa_logo.png')}}" alt="" width="75" height="30"> <img src="{{asset('assets/img/img2/mastercard.png')}}" alt="" width="50" height="30"><img src="{{asset('assets/img/img2/doku-logo.png')}}" alt="" width="30" height="30">
-              </div>
-              <div class="col-sm-6 pesan-button">
-              <button type="submit" value="Pesan" class="btn green-sea-flat-button">Pesan</button>
-              </div>
-              </div><!-- ROW BUTTON-->
-            </div>
-          </div>
+        <div id="addon"></div>
+      </div><!-- row layanan -->
+
+      <div class="row">
+        <div class="col-sm-6">
+          <h5 style="margin-top: 15px; margin-bottom: 15px @media screen and (min-width: 768px)">Payment with :</h5>
+          <img src="{{asset('assets/img/img2/Visa_logo.png')}}" alt="" width="75" height="30"> <img src="{{asset('assets/img/img2/mastercard.png')}}" alt="" width="50" height="30"><img src="{{asset('assets/img/img2/doku-logo.png')}}" alt="" width="30" height="30">
         </div>
+        <div class="col-sm-6 pesan-button">
+        <button type="submit" value="Pesan" class="btn green-sea-flat-button">Pesan</button>
+        </div>
+        </div><!-- ROW BUTTON-->
       </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var carTypeId = $('[name=carTypeId]').val();
+  var carType = $('[name=carType]').val();
+  var postData =
+              {
+                  "_token":"{{ csrf_token() }}",
+                  "carTypeId": carTypeId,
+                  "carType": carType,
+              }
+  $.ajax({
+    type: "POST",
+    url: "{{ url('cars/api/addon')}}",
+    data: postData,
+    success: function (data){
+      $('#addon').html(data);
+    }
+  });
+
+</script>
       @stop

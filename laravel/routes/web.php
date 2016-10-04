@@ -28,10 +28,14 @@ Route::get('/', 'Web\HomeController@index');
 Route::post('getcity', 'Web\HomeController@getcity');
 
 
-Route::get('services', 'Web\ServicesController@index');
+
+//CARS--------------------------------------------------------------------------
 Route::get('cars', 'Web\CarsController@index');
 Route::post('cars', 'Web\CarsController@searchcar');
-Route::post('cars/available', 'Web\CarsController@carsavailable');
+Route::post('cars/api/available', 'Web\CarsController@apicars');
+//CARS ADDON--------------------------------------------------------------------
+Route::get('cars/{carTypeId}/add-on', 'Web\AddOnController@index');
+Route::post('cars/api/addon', 'Web\AddOnController@apiaddon');
 
 
 Route::group(['middleware' => 'web','auth'],function(){
