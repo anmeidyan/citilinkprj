@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\sliders;
+use App\blogs;
 
 class HomeController extends Controller
 {
@@ -18,11 +19,12 @@ class HomeController extends Controller
     {
         //Home
         $sliders  = sliders::where('enable','=',1)->get();
+        $blogs = blogs::where('enable','=',1)->get();
         return view('web.home',[
-          'sliders' => $sliders
+          'sliders' => $sliders,
+          'blogs' => $blogs
         ]);
     }
-
 
     public function getcity()
     {
@@ -40,7 +42,7 @@ class HomeController extends Controller
       $info = curl_getinfo($ch);
       curl_close($ch);
       $data = json_decode($output);
-      
+
         echo "<option value='' data-id='' selected disabled>Pilih Area</option>";
       foreach ($data as $d) {
         echo "<option value='".$d->city."' data-id='".$d->cityId."'>".$d->city."</option>";
