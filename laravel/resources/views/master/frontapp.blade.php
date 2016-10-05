@@ -44,7 +44,7 @@
                         </li>
                         <li class="login-ul">
                             @if (Auth::guest())
-                            <a href="#" data-toggle="modal" data-target="#loginModal" onclick="getlogin()"><i class="fa fa-user" aria-hidden="true"></i> Login</a>
+                            <a href="#" data-toggle="modal" data-target="#loginModal"><i class="fa fa-user" aria-hidden="true"></i> Login</a>
                             @else
                             <a href="{{url('/logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 <i class="fa fa-user" aria-hidden="true"></i> Log Out
@@ -171,9 +171,9 @@
     <!-- Modal End -->
 
     <script type="text/javascript">
-        $(window).load(function() {
-        	$(".loader").fadeOut("normal");
-        });
+    $(window).load(function() {
+        $(".loader").fadeOut("normal");
+    });
     </script>
 
     <script type="text/javascript">
@@ -216,10 +216,10 @@
     $( ".datepick" ).datepicker({
         startDate: today,
     });
-
     </script>
 
     <script type="text/javascript">
+    getlogin();
     function getlogin(){
         $('#login').addClass('active');
         $('#register').removeClass('active');
@@ -234,24 +234,33 @@
     </script>
 
     <script type="text/javascript">
-        $(document).ready(function(){
-              $(document).ajaxStart(function(){
-                  $('.loading').show();
-              })
-              .ajaxStop(function(){
-                  $('.loading').fadeOut("normal");
-              })
-              .ajaxComplete(function(){
-                  $('.loading').fadeOut("normal");
-              })
-              .ajaxError(function(){
-                  $('.loading').fadeOut("normal");
-              })
-              .ajaxSuccess(function(){
-                  $('.loading').fadeOut("normal");
-              });
-          })
-      </script>
+        $(document).ready(function() {
+
+            if(window.location.href.indexOf('#loginModal') != -1) {
+                $('#loginModal').modal('show');
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $(document).ajaxStart(function(){
+            $('.loading').show();
+        })
+        .ajaxStop(function(){
+            $('.loading').fadeOut("normal");
+        })
+        .ajaxComplete(function(){
+            $('.loading').fadeOut("normal");
+        })
+        .ajaxError(function(){
+            $('.loading').fadeOut("normal");
+        })
+        .ajaxSuccess(function(){
+            $('.loading').fadeOut("normal");
+        });
+    })
+    </script>
 
 </body>
 </html>

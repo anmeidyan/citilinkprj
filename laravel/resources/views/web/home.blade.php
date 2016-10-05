@@ -389,62 +389,22 @@
 </div>
 
 <div class="container">
+    @foreach($blogs as $blog)
     <div class="col-xs-6 col-sm-6 col-md-3 blog-space">
         <img src="{{asset('assets/img/arrow2.png')}}" class="arrow2 hidden-xs"/>
-        <div class="blog-height" style="background-image:url(assets/img/blog1.jpg);"></div>
+        <div class="blog-height" style="background-image:url(<?php echo nl2br($blog->image) ?>);"></div>
         <div class="col-sm-12 blog-desc">
-            <span class="blog-title">BANDUNG</span><br>
-            <span class="blog-green">Malam Bandung</span><br>
+            <span class="blog-title">{{$blog->title}}</span><br>
+            <span class="blog-green">{{$blog->description}}</span><br>
             <br>
-            <span class="blog-tiny">Malam di kota kembang desa bandung</span><br>
+            <span class="blog-tiny"><?php echo substr($blog->content,0,30)?></span><br>
             <br>
             <div class="col-sm-12 padding-0 text-right">
-                <a href="#" class="btn-blog"><i class="fa fa-arrow-circle-right" style="font-size:24px;"></i></a>
+                <a href="{{url('blog/'.$blog->url)}}" class="btn-blog"><i class="fa fa-arrow-circle-right" style="font-size:24px;"></i></a>
             </div>
         </div>
     </div>
-    <div class="col-xs-6 col-sm-6 col-md-3 blog-space">
-        <img src="{{asset('assets/img/arrow2.png')}}" class="arrow2 hidden-xs"/>
-        <div class="blog-height" style="background-image:url(assets/img/blog2.jpg);"></div>
-        <div class="col-sm-12 blog-desc">
-            <span class="blog-title">LAWSON</span><br>
-            <span class="blog-green">FREE PASTA</span><br>
-            <br>
-            <span class="blog-tiny">Setiap pembayaran di lawson</span><br>
-            <br>
-            <div class="col-sm-12 padding-0 text-right">
-                <a href="#" class="btn-blog"><i class="fa fa-arrow-circle-right" style="font-size:24px;"></i></a>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-6 col-sm-6 col-md-3 blog-space">
-        <img src="{{asset('assets/img/arrow2.png')}}" class="arrow2 hidden-xs"/>
-        <div class="blog-height" style="background-image:url(assets/img/blog3.jpg);"></div>
-        <div class="col-sm-12 blog-desc">
-            <span class="blog-title">SURABAYA</span><br>
-            <span class="blog-green">Patung Gagah</span><br>
-            <br>
-            <span class="blog-tiny">Monumen patung gagah di surabaya</span><br>
-            <br>
-            <div class="col-sm-12 padding-0 text-right">
-                <a href="#" class="btn-blog"><i class="fa fa-arrow-circle-right" style="font-size:24px;"></i></a>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-6 col-sm-6 col-md-3 blog-space">
-        <img src="{{asset('assets/img/arrow2.png')}}" class="arrow2 hidden-xs"/>
-        <div class="blog-height" style="background-image:url(assets/img/blog4.jpg);"></div>
-        <div class="col-sm-12 blog-desc">
-            <span class="blog-title">FAMILY MART</span><br>
-            <span class="blog-green">FREE POTATO</span><br>
-            <br>
-            <span class="blog-tiny">Setiap pembayaran di family mart</span><br>
-            <br>
-            <div class="col-sm-12 padding-0 text-right">
-                <a href="#" class="btn-blog"><i class="fa fa-arrow-circle-right" style="font-size:24px;"></i></a>
-            </div>
-        </div>
-    </div>
+    @endforeach
 </div>
 
 <div class="container trigger-way">

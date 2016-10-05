@@ -17,7 +17,7 @@ class AppController extends Controller
                     <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                     <div class="col-md-6">
-                        <input id="email" type="email" class="form-control" name="email" required autofocus style="border:1px solid #ccc;">
+                        <input id="email" type="email" class="form-control" name="email" required autofocus style="border:1px solid #ccc;" value="admin@citilink.com">
                     </div>
                 </div>
 
@@ -25,7 +25,7 @@ class AppController extends Controller
                     <label for="password" class="col-md-4 control-label">Password</label>
 
                     <div class="col-md-6">
-                        <input id="password" type="password" class="form-control" name="password" required style="border:1px solid #ccc;">
+                        <input id="password" type="password" class="form-control" name="password" required style="border:1px solid #ccc;" value="123456">
                     </div>
                 </div>
 

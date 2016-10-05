@@ -27,7 +27,13 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label" style="padding-top:0px;">Title</label>
                                 <div class="col-sm-9">
-                                    <input type="text" name="title" placeholder="Title" class="form-control" value="{{$blogs->title}}">
+                                    <input type="text" name="title" placeholder="Title" class="form-control" value="{{$blogs->title}}" id="addtitle">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" style="padding-top:0px;">URL</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="url" placeholder="URL" class="form-control" value="{{$blogs->url}}" id="addurl">
                                 </div>
                             </div>
                             <div class="form-group">
