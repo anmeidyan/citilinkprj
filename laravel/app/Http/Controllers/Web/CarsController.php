@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\sliders;
 use Input;
 use Session;
+use App\cars;
 
 class CarsController extends Controller
 {
@@ -34,12 +35,17 @@ class CarsController extends Controller
       $pickUpTime   = date('d F Y',strtotime(Input::get('pickUpTime')))." ".Input::get('pickUpTime-hours').":00";
       $dropOffTime  = date('d F Y',strtotime(Input::get('dropOffTime')))." ".Input::get('dropOffTime-hours').":00";
 
+      $hours=round((strtotime($dropOffTime)-strtotime($pickUpTime))/3600,1);
+
+
 
       Session::set('cityId',$cityId);
       Session::set('city',$city);
       Session::set('pickUpAddress',$pickUpAddress);
       Session::set('pickUpTime',$pickUpTime);
       Session::set('dropOffTime',$dropOffTime);
+
+      Session::set('hours',$hours);
 
       Session::forget('carTypeId');
       Session::forget('carType');
@@ -77,31 +83,40 @@ class CarsController extends Controller
       curl_close($ch);
       $data = json_decode($output);
 
+
+      $cars= cars::all();
+      // var_dump($cars);
+
       if(count($data) == 0){
         echo "<div class='alert alert-warning'>No Cars Available</div>";
       }else{
         foreach ($data as $d) {
-          # code...
-          echo  "<div class='col-md-4 col-sm-6 hover' style='margin-top:20px;'>
-          <img src='".asset('assets/img/img2/mobil.png')."' class='img-responsive' />
-          <p class='judul-pilih1'>".$d->carType."</p>
-          <ul class='colourswatches'>
-          <div class='col-xs-3' style='margin-top: -15px;'><p style='color: white;'><i class='fa fa-users'>  ".$d->carSeat."</i></p></div>
-          <div class='col-xs-5' style='margin-top: -15px;'><p style='color: white;'><img src='".asset('assets/img/img2/gigi.png')."' alt='' height='15px' width='20px'> Automatic</p></div>
-          <div class='col-xs-4' style='margin-top: -15px; padding-right:1px; padding-left: 2px;'><p style='color: white;'><img src='".asset('assets/img/img2/premium.png')."' alt='' height='17px' width='20px'> Pertamax</p></div>
-          </ul>
-          <p class='judul-pilih'>Harga Mobil</p>
-          <p class='judul-pilih'>Lama Sewa : 150 jam</p>
-          <div class='col-xs-8 harga-pilih'>IDR ".$d->carRatesPerHour."</div>
-          <form action=".url('cars/prepare_addon')." method='post'>
-          ".csrf_field()."
-          <input type='hidden' name='carTypeId' value='".$d->carTypeId."'>
-          <input type='hidden' name='carType' value='".$d->carType."'>
-          <input type='hidden' name='carSeat' value='".$d->carSeat."'>
-          <input type='hidden' name='carRatesPerHour' value='".$d->carRatesPerHour."'>
-          <div class='col-xs-4'><button type='submit' class='btn green-sea-pesan'>Pesan</button></div>
-          </form>
-          </div>";
+          foreach ($cars as $c) {
+            // echo $d->carTypeId;
+            if($d->carTypeId == $c->type_id){
+              # code...
+              echo  "<div class='col-md-4 col-sm-6 hover' style='margin-top:20px;'>
+              <img src=".$c->image." class='img-responsive' />
+              <p class='judul-pilih1'>".$d->carType."</p>
+              <ul class='colourswatches'>
+              <div class='col-xs-3' style='margin-top: -15px;'><p style='color: white;'><i class='fa fa-users'>  ".$d->carSeat."</i></p></div>
+              <div class='col-xs-5' style='margin-top: -15px;'><p style='color: white;'><img src='".asset('assets/img/img2/gigi.png')."' alt='' height='15px' width='20px'> Automatic</p></div>
+              <div class='col-xs-4' style='margin-top: -15px; padding-right:1px; padding-left: 2px;'><p style='color: white;'><img src='".asset('assets/img/img2/premium.png')."' alt='' height='17px' width='20px'> Pertamax</p></div>
+              </ul>
+              <p class='judul-pilih'>Harga Mobil</p>
+              <p class='judul-pilih'>Lama Sewa : ".Session::get('hours')." jam</p>
+              <div class='col-xs-8 harga-pilih'>IDR ".$d->carRatesPerHour * Session::get('hours')."</div>
+              <form action=".url('cars/prepare_addon')." method='post'>
+              ".csrf_field()."
+              <input type='hidden' name='carTypeId' value='".$d->carTypeId."'>
+              <input type='hidden' name='carType' value='".$d->carType."'>
+              <input type='hidden' name='carSeat' value='".$d->carSeat."'>
+              <input type='hidden' name='carRatesPerHour' value='".$d->carRatesPerHour."'>
+              <div class='col-xs-4'><button type='submit' class='btn green-sea-pesan'>Pesan</button></div>
+              </form>
+              </div>";
+            }
+          }
         }
       }
     }

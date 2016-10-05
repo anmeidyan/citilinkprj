@@ -48,7 +48,7 @@
           <tr>
           <td colspan="" rowspan="" headers=""><img src="{{asset('assets/img/img2/rental.png')}}" alt=""></td>
             <td> Paket Rental</td>
-            <td colspan="" rowspan="" headers="" style="padding-left: 65px;color: #32bb4c; font-weight: bold;">:&nbsp;25 Hour(s)</td>
+            <td colspan="" rowspan="" headers="" style="padding-left: 65px;color: #32bb4c; font-weight: bold;">:&nbsp;{{ Session::get('hours') }} Hour(s)</td>
           </tr>
         </tbody>
       </table>
@@ -74,11 +74,11 @@
     <div class="col-sm-4">
       <h4 style="margin-bottom: 15px;">Harga Sewa Mobil</h4>
       <div class="product--price">
-        <span class="product--price_price"><p class="harga">IDR {{ Session::get('carRatesPerHour') }}</p></span>
+        <span class="product--price_price"><p class="harga">IDR <?php echo Session::get('carRatesPerHour')*Session::get('hours');?></p></span>
       </div>
     </div>
 
-    </div> 
+    </div>
     <!-- row -->
       <div class="row ">
         <div class="col-sm-12">
