@@ -28,8 +28,6 @@ class BlogsController extends Controller
         $name = Auth::user()->name;
 
         $comment = Input::get('comment');
-
-
     }
 
 }

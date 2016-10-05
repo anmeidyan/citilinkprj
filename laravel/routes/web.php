@@ -23,11 +23,8 @@ Route::get('getregist','Web\AppController@getregist');
 
 //------------------------------------------------------------------ FRONT START
 
-
 Route::get('/', 'Web\HomeController@index');
 Route::post('getcity', 'Web\HomeController@getcity');
-
-
 //BLOGS-------------------------------------------------------------------------
 Route::get('blog/{url}','Web\BlogsController@getblog');
 //CARS--------------------------------------------------------------------------
@@ -35,6 +32,7 @@ Route::get('cars', 'Web\CarsController@index');
 Route::post('cars', 'Web\CarsController@searchcar');
 Route::post('cars/api/available', 'Web\CarsController@apicars');
 Route::post('cars/prepare_addon', 'Web\CarsController@prepare_addon');
+Route::post('find_cars','Web\CarsController@find_cars');
 //CARS ADDON--------------------------------------------------------------------
 Route::get('cars/add-on', 'Web\AddOnController@index');
 Route::post('cars/api/addon', 'Web\AddOnController@apiaddon');
@@ -53,9 +51,9 @@ Route::group(['middleware' => 'auth'],function(){
 //-------------------------------------------------------------------- FRONT END
 
 /*
-|--------------------------------------------------------------------------
+|-------------------------------------------------------------------------------
 | ADMIN
-|--------------------------------------------------------------------------
+|-------------------------------------------------------------------------------
 */
 
 Route::group(['middleware' => 'admin','superadmin'],function(){

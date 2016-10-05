@@ -117,4 +117,22 @@ class CarsController extends Controller
 
       return Redirect('cars/add-on');
     }
+
+    public function find_cars(){
+        $date1 = Input::get('datepick');
+        $date2 = Input::get('datepick2');
+        $hour1 = Input::get('hourpick');
+        $hour2 = Input::get('hourpick2');
+
+        $pickup = date('d F Y',strtotime($date1))." ".$hour1.":00";
+        $dropoff = date('d F Y',strtotime($date2))." ".$hour2.":00";
+        $hours = round((strtotime($dropoff)-strtotime($pickup))/3600,1);
+
+        if ($hours > 0) {
+            echo '1';
+        }else {
+            echo '0';
+        }
+
+    }
 }

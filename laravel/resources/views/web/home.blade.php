@@ -20,7 +20,7 @@
     </ul>
     <div class="tab-content">
         <div id="find" class="tab-pane fade in active">
-          <form action="{{ url('cars')}}" method="post">
+          <form action="{{ url('cars')}}" method="post" id="subcars">
             {{ csrf_field() }}
             <div class="col-sm-12 bg-find">
                 <div class="col-sm-12 col-md-5 spacing-book" style="text-align:left;">
@@ -50,9 +50,9 @@
                     <span>Waktu Penjemputan & Pengembalian</span><br>
                     <div class="input-group" style="margin-bottom:10px;margin-top:7px;">
                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control datepick" placeholder="Tanggal Pergi" name="pickUpTime" required>
+                        <input type="text" class="form-control datepick" placeholder="Tanggal Pergi" name="pickUpTime" id="iddate" required>
                         <span class="input-group-addon">
-                          <select name="pickUpTime-hours">
+                          <select name="pickUpTime-hours" id="hourvalidate" onchange="hourchange()">
                               <option value="00" >00</option>
                               <option value="01" >01</option>
                               <option value="02" >02</option>
@@ -83,9 +83,9 @@
                     </div>
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control datepick" placeholder="Tanggal Pulang" name="dropOffTime" required>
+                        <input type="text" class="form-control datepick2" placeholder="Tanggal Pulang" name="dropOffTime" id="iddate2" required>
                         <span class="input-group-addon">
-                          <select name="dropOffTime-hours">
+                          <select name="dropOffTime-hours" id="hourvalidate2">
                               <option value="00" >00</option>
                               <option value="01" >01</option>
                               <option value="02" >02</option>
@@ -117,7 +117,7 @@
                 </div>
                 <div class="col-sm-12 col-md-2" style="text-align:left;padding-right:0;">
                     <br>
-                    <button type="submit" class="btn-book btn-default">
+                    <button type="button" class="btn-book btn-default" onclick="findcars()">
                         Search Cars <img src="{{asset('assets/img/mobilwhite.png')}}" style="width:34px;height:34px;"/>
                     </button>
                 </div>
@@ -625,4 +625,72 @@ $.ajax({
 });
 
 </script>
+
+<script type="text/javascript">
+var today = new Date();
+var month = ("0" + (today.getMonth() + 1)).slice(-2);
+var date = ("0" + today.getDate()).slice(-2);
+var complete = month + '/' + date + '/' +  today.getFullYear();
+var hour = today.getHours();
+var validhour = parseInt(hour+01);
+
+$( ".datepick" ).datepicker({
+    startDate: today,
+});
+$(".datepick").on("change",function(){
+    var selected = $(this).val();
+    $('#iddate').val(selected);
+    $('#hourvalidate').val('00');
+});
+
+$( ".datepick2" ).datepicker({
+    startDate: today,
+});
+$(".datepick2").on("change",function(){
+    var selected2 = $(this).val();
+    $('#iddate2').val(selected2);
+    $('#hourvalidate2').val('00');
+});
+
+function hourchange(){
+    var datepick = $('#iddate').val();
+    var pick = $('#hourvalidate').val();
+    if (datepick == complete) {
+        if (validhour >= pick) {
+            alert('Waktu penjemputan harus 2 jam melebihi waktu sekarang.');
+            $('#hourvalidate').val('00');
+        }
+    }
+}
+
+function findcars(){
+    var datepick = $('#iddate').val();
+    var datepick2 = $('#iddate2').val();
+    var hourpick = $('#hourvalidate').val();
+    var hourpick2 = $('#hourvalidate2').val();
+
+    // var token = $('#token').val();
+    var dataString = '_token=' + "{{ csrf_token() }}"
+                    + '&datepick=' + datepick
+                    + '&datepick2=' + datepick2
+                    + '&hourpick=' + hourpick
+                    + '&hourpick2=' + hourpick2;
+
+    $.ajax({
+        type: "POST",
+        url: "{{ url('find_cars') }}",
+        data: dataString,
+        success: function (data) {
+            if(data == 1){
+                $('#subcars').submit();
+            }else {
+                alert('Waktu pengembalian harus melebihi waktu penjemputan.');
+            }
+        },
+    });
+}
+
+
+</script>
+
 @stop

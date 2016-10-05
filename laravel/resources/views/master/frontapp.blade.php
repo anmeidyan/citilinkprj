@@ -211,14 +211,6 @@
     </script>
 
     <script type="text/javascript">
-    var today = new Date();
-
-    $( ".datepick" ).datepicker({
-        startDate: today,
-    });
-    </script>
-
-    <script type="text/javascript">
     getlogin();
     function getlogin(){
         $('#login').addClass('active');

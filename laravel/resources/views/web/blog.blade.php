@@ -49,10 +49,11 @@
             <!-- Comments Form -->
             <div class="well">
                 <h4>Leave a Comment:</h4>
-                <form role="form" method="POST" action="#">
+                <form role="form" method="POST" action="#" id="subcomment">
                     <input type="hidden" name="_token" value="<?= csrf_token(); ?>">
                     <div class="form-group">
-                        <textarea class="form-control" rows="3" style="border:1px solid #ccc;" name="content"></textarea>
+                        <div class="validcomment" style="color:red;"></div>
+                        <textarea class="form-control" rows="3" style="border:1px solid #ccc;" name="content" id="inputcontent"></textarea>
                     </div>
                     <button type="button" class="btn btn-primary" onclick="postment">Submit</button>
                 </form>
@@ -136,6 +137,7 @@
 
 <script type="text/javascript">
     function postment(){
+        var content = $('.inputcontent').val();
 
     }
 </script>
