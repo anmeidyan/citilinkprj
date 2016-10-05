@@ -44,6 +44,7 @@ class BlogsController extends Controller
     public function store()
     {
         $rules = [
+            'url'       => 'required|unique:blogs',
             'image'     => 'required',
             'title'     => 'required',
             'desc'      => 'required',
@@ -57,6 +58,7 @@ class BlogsController extends Controller
         } else {
 
             $now    = new DateTime();
+            $url  = Input::get('url');
             $image  = Input::get('image');
             $title  = Input::get('title');
             $desc   = Input::get('desc');
@@ -70,6 +72,7 @@ class BlogsController extends Controller
 
             $blogs = new blogs;
             $blogs->enable        = $enable;
+            $blogs->url           = $url;
             $blogs->image         = $image;
             $blogs->title         = $title;
             $blogs->description   = $desc;
@@ -117,6 +120,7 @@ class BlogsController extends Controller
     public function update($id)
     {
         $rules = [
+            'url'       => 'required',
             'image'     => 'required',
             'title'     => 'required',
             'desc'      => 'required',
@@ -130,6 +134,7 @@ class BlogsController extends Controller
         } else {
 
             $now    = new DateTime();
+            $url  = Input::get('url');
             $image  = Input::get('image');
             $title  = Input::get('title');
             $desc   = Input::get('desc');
@@ -143,6 +148,7 @@ class BlogsController extends Controller
 
             $blogs = blogs::find($id);
             $blogs->enable        = $enable;
+            $blogs->url           = $url;
             $blogs->image         = $image;
             $blogs->title         = $title;
             $blogs->description   = $desc;
@@ -167,6 +173,6 @@ class BlogsController extends Controller
        $blogs->delete();
 
        // redirect
-       return redirect('/admin/sliders')->with('delete', 'successfully deleted data');
+       return redirect('/admin/blogs')->with('delete', 'successfully deleted data');
     }
 }

@@ -46,10 +46,10 @@
     <![endif]-->
 
     <style media="screen">
-        .alert-dismissable{
-            margin-left: 10px;
-            margin-right: 10px;
-        }
+    .alert-dismissable{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
     </style>
 
 </head>
@@ -398,6 +398,14 @@ $('#rupiah').priceFormat({
     centsLimit: false,
     centsSeparator: '',
     thousandsSeparator: '.'
+});
+</script>
+
+<script>
+$("#addtitle").on('change', function() {
+    var repl = $('#addtitle').val().replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '').toLowerCase();
+    var rep2 = repl.replace(/\s+/gi, '-').toLowerCase();
+    $('#addurl').val(rep2);
 });
 </script>
 

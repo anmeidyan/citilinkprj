@@ -28,7 +28,8 @@ Route::get('/', 'Web\HomeController@index');
 Route::post('getcity', 'Web\HomeController@getcity');
 
 
-
+//BLOGS-------------------------------------------------------------------------
+Route::get('blog/{url}','Web\BlogsController@getblog');
 //CARS--------------------------------------------------------------------------
 Route::get('cars', 'Web\CarsController@index');
 Route::post('cars', 'Web\CarsController@searchcar');
@@ -42,9 +43,10 @@ Route::post('cars/prepare_payment', 'Web\AddOnController@prepare_payment');
 Route::get('cars/payment', 'Web\PaymentController@index');
 Route::post('cars/payment', 'Web\PaymentController@dopayment');
 
-Route::group(['middleware' => 'web','auth'],function(){
+Route::group(['middleware' => 'auth'],function(){
 
-
+    // POST BLOGS
+    Route::post('comment','Web\BlogsController@postcomment');
 
 });
 

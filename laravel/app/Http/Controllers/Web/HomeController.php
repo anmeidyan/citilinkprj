@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\sliders;
 use Session;
+use App\blogs;
 
 class HomeController extends Controller
 {
@@ -29,11 +30,12 @@ class HomeController extends Controller
         Session::forget('carRatesPerHour');
         //Home
         $sliders  = sliders::where('enable','=',1)->get();
+        $blogs = blogs::where('enable','=',1)->get();
         return view('web.home',[
-          'sliders' => $sliders
+          'sliders' => $sliders,
+          'blogs' => $blogs
         ]);
     }
-
 
     public function getcity()
     {

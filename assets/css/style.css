@@ -935,3 +935,10 @@
         margin-bottom: 60px;
     }
 }
+
+/*BLOGS*/
+.blog-img{
+	max-height: 500px;
+	max-width: 900px;
+	text-align: center;
+}
