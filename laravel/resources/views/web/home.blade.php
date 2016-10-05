@@ -126,19 +126,22 @@
         </div>
         <div id="manage" class="tab-pane fade">
             <div class="col-sm-12 bg-find">
+              <form action="{{ url('manage_booking')}}" method="post">
+                {{ csrf_field() }}
                 <div class="col-sm-5" style="text-align:left;">
                     <span>Masukan Kode Booking</span><br>
                     <div class="input-group" style="margin-bottom:10px;margin-top:7px;">
                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar-check-o" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" placeholder="Kode Booking" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Kode Booking" aria-describedby="basic-addon1" name="booking-code">
                     </div>
                 </div>
                 <div class="col-sm-2" style="text-align:left;padding-right:0;">
                     <br>
-                    <button class="btn-send btn-default" style="color:#fff;">
+                    <button type="submit" class="btn-send btn-default" style="color:#fff;">
                         Send
                     </button>
                 </div>
+              </form>
             </div>
         </div>
     </div>

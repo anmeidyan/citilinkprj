@@ -37,9 +37,23 @@ Route::post('find_cars','Web\CarsController@find_cars');
 Route::get('cars/add-on', 'Web\AddOnController@index');
 Route::post('cars/api/addon', 'Web\AddOnController@apiaddon');
 Route::post('cars/prepare_payment', 'Web\AddOnController@prepare_payment');
-//CARS PAYMENT--------------------------------------------------------------------
+//CARS PAYMENT------------------------------------------------------------------
 Route::get('cars/payment', 'Web\PaymentController@index');
 Route::post('cars/payment', 'Web\PaymentController@dopayment');
+
+Route::get('thankyou/{booking}', 'Web\ThankyouController@index');
+
+
+//MANAGE BOOKING----------------------------------------------------------------
+Route::get('manage_booking', 'Web\BookingController@index');
+Route::post('manage_booking', 'Web\BookingController@index');
+
+
+Route::post('manage_booking/api', 'Web\BookingController@manage_booking');
+
+
+
+
 
 Route::group(['middleware' => 'auth'],function(){
 

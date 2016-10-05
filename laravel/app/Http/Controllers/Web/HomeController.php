@@ -26,6 +26,9 @@ class HomeController extends Controller
         Session::forget('pickUpTime');
         Session::forget('dropOffTime');
 
+
+        Session::forget('hours');
+
         Session::forget('carTypeId');
         Session::forget('carType');
         Session::forget('carRatesPerHour');

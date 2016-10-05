@@ -84,6 +84,9 @@ class PaymentController extends Controller
       $info = curl_getinfo($ch);
       curl_close($ch);
       $data = json_decode($output);
-      var_dump($data);
+      if(!empty($data->bookingCode)){
+        return redirect('thankyou/'.$data->bookingCode);
+      }
+
     }
 }
