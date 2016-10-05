@@ -12,6 +12,8 @@
     <input type="hidden" name="address" value="{{ Session::get('address') }}">
     <input type="hidden" name="pickUpTime" value="{{ Session::get('pickUpTime') }}">
     <input type="hidden" name="dropOffTime" value="{{ Session::get('dropOffTime') }}">
+
+    <?php echo Session::get('pickUpTime');?>
   <?php } ?>
 
           <div class="row">

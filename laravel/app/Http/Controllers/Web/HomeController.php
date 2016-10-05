@@ -52,9 +52,13 @@ class HomeController extends Controller
       curl_close($ch);
       $data = json_decode($output);
 
-        echo "<option value='' data-id='' selected disabled>Pilih Area</option>";
-      foreach ($data as $d) {
-        echo "<option value='".$d->city."' data-id='".$d->cityId."'>".$d->city."</option>";
+      if($data == null){
+          echo "<option value='' data-id='' selected disabled>Pilih Area</option>";
+      }else{
+          echo "<option value='' data-id='' selected disabled>Pilih Area</option>";
+        foreach ($data as $d) {
+          echo "<option value='".$d->city."' data-id='".$d->cityId."'>".$d->city."</option>";
+        }
       }
     }
 }

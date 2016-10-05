@@ -50,11 +50,69 @@
                     <span>Waktu Penjemputan & Pengembalian</span><br>
                     <div class="input-group" style="margin-bottom:10px;margin-top:7px;">
                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control datepick" placeholder="Tanggal Pergi" name="pickUpTime" value="25 September 2016 07:00:00" required>
+                        <input type="text" class="form-control datepick" placeholder="Tanggal Pergi" name="pickUpTime" required>
+                        <span class="input-group-addon">
+                          <select name="pickUpTime-hours">
+                              <option value="00" >00</option>
+                              <option value="01" >01</option>
+                              <option value="02" >02</option>
+                              <option value="03" >03</option>
+                              <option value="04" >04</option>
+                              <option value="05" >05</option>
+                              <option value="06" >06</option>
+                              <option value="07" >07</option>
+                              <option value="08" >08</option>
+                              <option value="09" >09</option>
+                              <option value="10" >10</option>
+                              <option value="11" >11</option>
+                              <option value="12" >12</option>
+                              <option value="13" >13</option>
+                              <option value="14" >14</option>
+                              <option value="15" >15</option>
+                              <option value="16" >16</option>
+                              <option value="17" >17</option>
+                              <option value="18" >18</option>
+                              <option value="19" >19</option>
+                              <option value="20" >20</option>
+                              <option value="21" >21</option>
+                              <option value="22" >22</option>
+                              <option value="23" >23</option>
+                              <option value="24" >24</option>
+                          </select>
+                        </span>
                     </div>
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control datepick" placeholder="Tanggal Pulang" name="dropOffTime" value="25 September 2016 10:00:00" required>
+                        <input type="text" class="form-control datepick" placeholder="Tanggal Pulang" name="dropOffTime" required>
+                        <span class="input-group-addon">
+                          <select name="dropOffTime-hours">
+                              <option value="00" >00</option>
+                              <option value="01" >01</option>
+                              <option value="02" >02</option>
+                              <option value="03" >03</option>
+                              <option value="04" >04</option>
+                              <option value="05" >05</option>
+                              <option value="06" >06</option>
+                              <option value="07" >07</option>
+                              <option value="08" >08</option>
+                              <option value="09" >09</option>
+                              <option value="10" >10</option>
+                              <option value="11" >11</option>
+                              <option value="12" >12</option>
+                              <option value="13" >13</option>
+                              <option value="14" >14</option>
+                              <option value="15" >15</option>
+                              <option value="16" >16</option>
+                              <option value="17" >17</option>
+                              <option value="18" >18</option>
+                              <option value="19" >19</option>
+                              <option value="20" >20</option>
+                              <option value="21" >21</option>
+                              <option value="22" >22</option>
+                              <option value="23" >23</option>
+                              <option value="24" >24</option>
+                          </select>
+                        </span>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-2" style="text-align:left;padding-right:0;">

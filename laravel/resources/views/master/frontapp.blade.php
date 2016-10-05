@@ -12,14 +12,14 @@
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/owl.carousel.2/assets/owl.carousel.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/datepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/datepicker3.css') }}" rel="stylesheet">
 
 
     <!-- jQuery -->
     <script src="{{ asset('assets/js/jquery-2.2.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/owl.carousel.2/owl.carousel.js') }}"></script>
-    <script src="{{ asset('assets/datepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap-datepicker.js') }}"></script>
 
 </head>
 <body id="myDiv">

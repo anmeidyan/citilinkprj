@@ -40,16 +40,16 @@ class PaymentController extends Controller
       $customerEmail = Input::get('customerEmail');
       $pickUpAddress = Session::get('pickUpAddress');
       //
-      echo $cityId."<br>";
-      echo $city ."<br>";
-      echo $pickUpTime  ."<br>";
-      echo $dropOffTime ."<br>";
-      echo $carTypeId  ."<br>";
-      echo $carType     ."<br>";
-      echo $customerName ."<br>";
-      echo $customerPhone ."<br>";
-      echo $customerEmail."<br>";
-      echo $pickUpAddress."<br>";
+      // echo $cityId."<br>";
+      // echo $city ."<br>";
+      // echo $pickUpTime  ."<br>";
+      // echo $dropOffTime ."<br>";
+      // echo $carTypeId  ."<br>";
+      // echo $carType     ."<br>";
+      // echo $customerName ."<br>";
+      // echo $customerPhone ."<br>";
+      // echo $customerEmail."<br>";
+      // echo $pickUpAddress."<br>";
 
 
       $url= "http://202.137.21.100:8080/aims2/retail/hourlyRental/order/booking/";

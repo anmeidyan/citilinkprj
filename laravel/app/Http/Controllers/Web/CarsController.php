@@ -31,8 +31,9 @@ class CarsController extends Controller
       $cityId       = Input::get('cityId');
       $city         = Input::get('city');
       $pickUpAddress= Input::get('pickUpAddress');
-      $pickUpTime   = Input::get('pickUpTime');
-      $dropOffTime  = Input::get('dropOffTime');
+      $pickUpTime   = date('d F Y',strtotime(Input::get('pickUpTime')))." ".Input::get('pickUpTime-hours').":00";
+      $dropOffTime  = date('d F Y',strtotime(Input::get('dropOffTime')))." ".Input::get('dropOffTime-hours').":00";
+
 
       Session::set('cityId',$cityId);
       Session::set('city',$city);
@@ -40,14 +41,18 @@ class CarsController extends Controller
       Session::set('pickUpTime',$pickUpTime);
       Session::set('dropOffTime',$dropOffTime);
 
+      Session::forget('carTypeId');
+      Session::forget('carType');
+      Session::forget('carRatesPerHour');
+
       return view('web.cars.index');
     }
     public function apicars() //Post API
     {
       $cityId       = Input::get('cityId');
       $city         = Input::get('city');
-      $pickUpTime   = "1474786800000";
-      $dropOffTime  = "1474797600000";
+      $pickUpTime   = strtotime(Session::get('pickUpTime'))*1000;
+      $dropOffTime  = strtotime(Session::get('dropOffTime'))*1000;
 
       $url= "http://202.137.21.100:8080/aims2/retail/hourlyRental/car/getAvailabilityAndRatesByCity/";
       $username ="API.hourlyRental.2016";
