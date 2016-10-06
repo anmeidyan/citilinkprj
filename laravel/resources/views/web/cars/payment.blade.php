@@ -80,7 +80,7 @@
           <div class="input-group">
            <input type="text" class="form-control" placeholder="">
            <span class="input-group-btn">
-             <button class="btn btn-secondary" type="button">Use!</button>
+             <button class="btn btn-secondary" type="button" style="border: 1px solid #ccc;">Use!</button>
            </span>
          </div>
         </div><!--/.col-->
@@ -100,11 +100,19 @@
       {{ csrf_field() }}
       <div class="form-group">
         <label>Customer Name</label>
+        @if (Auth::check())
+        <input type="text" class="form-control" name="customerName" value="{{Auth::user()->name}}">
+        @else
         <input type="text" class="form-control" placeholder="" name="customerName">
+        @endif
       </div>
       <div class="form-group">
         <label>Customer Email</label>
+        @if (Auth::check())
+        <input type="text" class="form-control" name="customerEmail" value="{{Auth::user()->email}}">
+        @else
         <input type="text" class="form-control" placeholder="" name="customerEmail">
+        @endif
       </div>
       <div class="form-group">
         <label>Customer Phone</label>

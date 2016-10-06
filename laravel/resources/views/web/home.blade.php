@@ -661,7 +661,7 @@ function hourchange(){
     if (datepick == complete) {
         if (validhour >= pick) {
             alert('Waktu penjemputan harus 2 jam melebihi waktu sekarang.');
-            $('#hourvalidate').val('00');
+            $('#hourvalidate').val('--');
         }
     }
 }

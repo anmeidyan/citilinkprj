@@ -18,8 +18,8 @@
 */
 Auth::routes();
 
-Route::get('getlogin','Web\AppController@getlogin');
-Route::get('getregist','Web\AppController@getregist');
+Route::post('getlogin','Web\AppController@getlogin');
+Route::post('getregist','Web\AppController@getregist');
 
 //------------------------------------------------------------------ FRONT START
 
@@ -79,6 +79,11 @@ Route::group(['middleware' => 'admin','superadmin'],function(){
         return Redirect('admin/dashboard');
     });
     Route::get('admin/dashboard', 'Admin\DashboardController@index');
+    //ORDERS--------------------------------------------------------------------
+    Route::get('admin/orders','Admin\OrdersController@index');
+    Route::get('admin/orders/cancel/{id}','Admin\OrdersController@cancel');
+    Route::get('admin/orders/destroy/{id}','Admin\OrdersController@destroy');
+    Route::get('admin/orders/history','Admin\OrdersController@history');
     //USERS---------------------------------------------------------------------
     Route::resource('admin/users','Admin\UsersController');
     //BLOG----------------------------------------------------------------------

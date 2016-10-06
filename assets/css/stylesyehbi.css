@@ -380,7 +380,7 @@ ul.colourswatches li.weered {
 }
 
 .form-control{
-    border-left: 1px solid #32bb4c;
+    border-left: 1px solid #ccc;
 }
 
 .hover::after {

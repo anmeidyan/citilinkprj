@@ -45,7 +45,7 @@
     <div class="col-lg-12" style="margin-top: 30px;">
     <div class="col-md-offset-3 col-md-6">
       <div class="input-group">
-          <select name="sort" id="" class="form-control option-sort">
+          <select name="sort" id="" class="form-control option-sort" style="border-left:1px solid #32bb4c;">
                   <option value="">A-Z</option>
                   <option value="">Z-A</option>
                   <option value="">Terendah-Tertinggi</option>

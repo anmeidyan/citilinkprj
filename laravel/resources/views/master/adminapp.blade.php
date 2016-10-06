@@ -139,6 +139,15 @@
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-credit-card"></i> <span>Order</span> <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="{{url('/admin/orders')}}"><i class="fa fa-circle-o"></i> Lists</a></li>
+                <li><a href="{{url('admin/orders/history')}}"><i class="fa fa-circle-o"></i> History</a></li>
+            </ul>
+        </li>
         <li>
             <a href="{{url('/admin/sliders')}}">
                 <i class="fa fa-clone"></i> <span>Slider</span>
