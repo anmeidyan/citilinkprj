@@ -37,7 +37,7 @@
 </div><br><br><br>
 <div class="row">
 <div class="col-sm-5">
-  <img src="{{asset('assets/img/img2/mobil.png')}}" class="img-responsive" height="300px">
+  <img src="{{ Session::get('image') }}" class="img-responsive" height="300px">
 </div>
 <div class="col-sm-7">
   <div class="row">

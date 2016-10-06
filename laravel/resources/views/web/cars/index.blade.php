@@ -58,6 +58,9 @@
         </div>
       </div><!-- /.col-lg-6 -->
         </form>
+        <div id="booking-loading" style="display:none; padding:100px; text-align:center;">
+          <img src="{{ asset('assets/img/loading.gif')}}">
+        </div>
         <div class="col-md-12 col-lg-12" style="padding: 0px 0px; margin-top:20px;" id="cars">
 
         </div>
@@ -82,7 +85,13 @@ $.ajax({
   type: "POST",
   url: "{{ url('cars/api/available')}}",
   data: postData,
+  beforeSend: function() {
+    $('.alert').fadeOut();
+    $('#booking-loading').fadeIn();
+    $('#cars').html("");
+  },
   success: function (data){
+    $('#booking-loading').hide();
     $('#cars').html(data);
   }
 });
