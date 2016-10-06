@@ -18,8 +18,8 @@
 */
 Auth::routes();
 
-Route::get('getlogin','Web\AppController@getlogin');
-Route::get('getregist','Web\AppController@getregist');
+Route::post('getlogin','Web\AppController@getlogin');
+Route::post('getregist','Web\AppController@getregist');
 
 //------------------------------------------------------------------ FRONT START
 

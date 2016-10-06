@@ -100,11 +100,19 @@
       {{ csrf_field() }}
       <div class="form-group">
         <label>Customer Name</label>
+        @if (Auth::check())
+        <input type="text" class="form-control" name="customerName" value="{{Auth::user()->name}}">
+        @else
         <input type="text" class="form-control" placeholder="" name="customerName">
+        @endif
       </div>
       <div class="form-group">
         <label>Customer Email</label>
+        @if (Auth::check())
+        <input type="text" class="form-control" name="customerEmail" value="{{Auth::user()->email}}">
+        @else
         <input type="text" class="form-control" placeholder="" name="customerEmail">
+        @endif
       </div>
       <div class="form-group">
         <label>Customer Phone</label>

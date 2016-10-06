@@ -39,22 +39,25 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            @if (Auth::check())<br>@endif
+                            <br>
                             <a href="#">Info Penerbangan</a>
                         </li>
                         <li class="login-ul">
                             @if (Auth::guest())
-                            <a href="#" data-toggle="modal" data-target="#loginModal"><i class="fa fa-user" aria-hidden="true"></i> Login</a>
+                                <a href="#" data-toggle="modal" data-target="#loginModal"><i class="fa fa-user" aria-hidden="true"></i> Login</a>
+                                <a class="supergreen-nav">
+                                    <span style="color:#0C803C;">SUPER</span><span style="color:#65b32e;">GREEN</span>
+                                    </a>
                             @else
-                            <a href="{{url('/logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                <i class="fa fa-user" aria-hidden="true"></i> Log Out
-                            </a>
-                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
+                                <a href="{{url('/logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                    <i class="fa fa-user" aria-hidden="true"></i> Log Out
+                                </a>
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
                             @endif
                             @if (Auth::check())
-                            <a href="#" class="supergreen-nav"><span style="color:#65b32e;">{{Auth::user()->name}}</span></a>
+                                <a class="supergreen-nav"><span style="color:#65b32e;">{{Auth::user()->name}}</span></a>
                             @endif
                         </li>
                     </ul>
@@ -215,13 +218,39 @@
     function getlogin(){
         $('#login').addClass('active');
         $('#register').removeClass('active');
-        $('#changebody').load('{{url('getlogin')}}');
+
+        $.ajax({
+          type: "POST",
+          url: "{{ url('getlogin')}}",
+          data: postData,
+          beforeSend: function() {
+            $('#changebody').addClass('text-center');
+            $('#changebody').html('<img src="assets/img/loading.gif" style="width:50px;height:50px;">');
+          },
+          success: function (data){
+            $('#changebody').removeClass('text-center');
+            $('#changebody').html(data);
+          }
+        });
     }
 
     function getregist(){
         $('#register').addClass('active');
         $('#login').removeClass('active');
-        $('#changebody').load('{{url('getregist')}}');
+
+        $.ajax({
+          type: "POST",
+          url: "{{ url('getregist')}}",
+          data: postData,
+          beforeSend: function() {
+            $('#changebody').addClass('text-center');
+            $('#changebody').html('<img src="assets/img/loading.gif" style="width:50px;height:50px;">');
+          },
+          success: function (data){
+            $('#changebody').removeClass('text-center');
+            $('#changebody').html(data);
+          }
+        });
     }
     </script>
 
