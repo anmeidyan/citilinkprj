@@ -80,7 +80,7 @@
           <div class="input-group">
            <input type="text" class="form-control" placeholder="">
            <span class="input-group-btn">
-             <button class="btn btn-secondary" type="button">Use!</button>
+             <button class="btn btn-secondary" type="button" style="border: 1px solid #ccc;">Use!</button>
            </span>
          </div>
         </div><!--/.col-->

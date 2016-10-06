@@ -53,6 +53,7 @@
                         <input type="text" class="form-control datepick" placeholder="Tanggal Pergi" name="pickUpTime" id="iddate" required>
                         <span class="input-group-addon">
                           <select name="pickUpTime-hours" id="hourvalidate" onchange="hourchange()">
+                              <option selected disabled>--</option>
                               <option value="00" >00</option>
                               <option value="01" >01</option>
                               <option value="02" >02</option>
@@ -86,7 +87,7 @@
                         <input type="text" class="form-control datepick2" placeholder="Tanggal Pulang" name="dropOffTime" id="iddate2" required>
                         <span class="input-group-addon">
                           <select name="dropOffTime-hours" id="hourvalidate2">
-                              <option value="00" >00</option>
+                              <option selected disabled>--</option>
                               <option value="01" >01</option>
                               <option value="02" >02</option>
                               <option value="03" >03</option>
