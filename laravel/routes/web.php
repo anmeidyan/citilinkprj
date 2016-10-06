@@ -50,6 +50,9 @@ Route::post('manage_booking', 'Web\BookingController@index');
 
 
 Route::post('manage_booking/api', 'Web\BookingController@manage_booking');
+Route::post('manage_booking/api/docancel', 'Web\BookingController@docancel');
+
+
 
 
 

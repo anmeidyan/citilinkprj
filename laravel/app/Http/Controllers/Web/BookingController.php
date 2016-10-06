@@ -92,12 +92,7 @@ class BookingController extends Controller
                   <p class='form-control-static'> ".$data->customerPhone."</p>
                 </div>
               </div>
-              <div class='form-group'>
-                <label class='col-sm-3 control-label'>Customer Email</label>
-                <div class='col-sm-9'>
-                  <p class='form-control-static'> ".$data->customerEmail."</p>
-                </div>
-              </div>
+
               <div class='form-group'>
                 <label class='col-sm-3 control-label'>Pick Up Address</label>
                 <div class='col-sm-9'>
@@ -154,10 +149,48 @@ class BookingController extends Controller
 
               </div><!--/.col-->
           </div><!--/.form-horizontal-->
-        </div><!--/.row-->";
+        </div><!--/.row-->
+        <div class='row'>
+          <div class='col-sm-12'>
+            <button type='button' class='btn btn-danger' onClick=\"cancel_order('$bookingcode');\">Cancel Order</button>
+          </div>
+        </div>
+        ";
       }
 
 
+    }
+    public function docancel()
+    {
+        # code...
+        $bookingcode      = Input::get('bookingcode');
+
+        $url= "http://202.137.21.100:8080/aims2/retail/hourlyRental/order/cancel/";
+        $username ="API.hourlyRental.2016";
+        $password ="4P1.hourlyRental.2016";
+        $post = array(
+          "bookingCode"      => $bookingcode,
+        );
+        $data_json = json_encode($post);
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url );
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
+        curl_setopt($ch, CURLOPT_POST, true );
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_json);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $output = curl_exec($ch);
+        $info = curl_getinfo($ch);
+        curl_close($ch);
+        $data = json_decode($output);
+        if($data->status == "100"){
+          echo 'success';
+        }else if($data->status == "101"){
+          echo "error";
+        }else{
+          echo "error";
+        }
     }
 
 }

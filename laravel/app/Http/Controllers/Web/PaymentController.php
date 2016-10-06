@@ -108,6 +108,11 @@ class PaymentController extends Controller
         $orders->created_at   = $now;
         $orders->save();
 
+        // foreach ($data->addons as $add) {
+        //   # code...
+        //   echo $add->addon."(".$add->addonQty.")<br>";
+        // }
+
       //  foreach ($variable as $key => $value) {
           # code...
         $orders_addons               = new orders_addons;
