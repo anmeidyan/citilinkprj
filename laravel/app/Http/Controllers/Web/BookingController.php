@@ -53,6 +53,8 @@ class BookingController extends Controller
       // echo "<pre>";
       // var_dump($data);
       // echo "</pre>";
+      $pick   = date("d F Y H:i",$data->pickUpTime / 1000);
+      $drop   = date("d F Y H:i",$data->dropOffTime / 1000);
       if(!isset($data->city)){
         echo "<div class='alert alert-warning'>Booking code not found</div>";
       }else{
@@ -69,13 +71,13 @@ class BookingController extends Controller
               <div class='form-group'>
                 <label class='col-sm-3 control-label'>Pick Up Time</label>
                 <div class='col-sm-9'>
-                  <p class='form-control-static'> ".$data->pickUpTime."</p>
+                  <p class='form-control-static'> ".$pick."</p>
                 </div>
               </div>
               <div class='form-group'>
                 <label class='col-sm-3 control-label'>Drop Off Time</label>
                 <div class='col-sm-9'>
-                  <p class='form-control-static'> ".$data->dropOffTime."</p>
+                  <p class='form-control-static'> ".$drop."</p>
                 </div>
               </div>
               <div class='form-group'>
