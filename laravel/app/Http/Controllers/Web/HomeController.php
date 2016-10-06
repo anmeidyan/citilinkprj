@@ -32,6 +32,12 @@ class HomeController extends Controller
         Session::forget('carTypeId');
         Session::forget('carType');
         Session::forget('carRatesPerHour');
+        Session::forget('image');
+
+        
+        Session::forget('voucherCode');
+        Session::forget('voucherValue');
+
         //Home
         $sliders  = sliders::where('enable','=',1)->get();
         $blogs = blogs::where('enable','=',1)->get();

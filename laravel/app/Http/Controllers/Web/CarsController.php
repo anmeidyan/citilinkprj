@@ -39,6 +39,7 @@ class CarsController extends Controller
 
 
 
+
       Session::set('cityId',$cityId);
       Session::set('city',$city);
       Session::set('pickUpAddress',$pickUpAddress);
@@ -50,6 +51,7 @@ class CarsController extends Controller
       Session::forget('carTypeId');
       Session::forget('carType');
       Session::forget('carRatesPerHour');
+      Session::forget('image');
 
       return view('web.cars.index');
     }
@@ -59,6 +61,7 @@ class CarsController extends Controller
       $city         = Input::get('city');
       $pickUpTime   = strtotime(Session::get('pickUpTime'))*1000;
       $dropOffTime  = strtotime(Session::get('dropOffTime'))*1000;
+
 
       $url= "http://202.137.21.100:8080/aims2/retail/hourlyRental/car/getAvailabilityAndRatesByCity/";
       $username ="API.hourlyRental.2016";
@@ -85,7 +88,6 @@ class CarsController extends Controller
 
 
       $cars= cars::all();
-      // var_dump($cars);
 
       if(count($data) == 0){
         echo "<div class='alert alert-warning'>No Cars Available</div>";
@@ -100,8 +102,8 @@ class CarsController extends Controller
               <p class='judul-pilih1'>".$d->carType."</p>
               <ul class='colourswatches'>
               <div class='col-xs-3' style='margin-top: -15px;'><p style='color: white;'><i class='fa fa-users'>  ".$d->carSeat."</i></p></div>
-              <div class='col-xs-5' style='margin-top: -15px;'><p style='color: white;'><img src='".asset('assets/img/img2/gigi.png')."' alt='' height='15px' width='20px'> Automatic</p></div>
-              <div class='col-xs-4' style='margin-top: -15px; padding-right:1px; padding-left: 2px;'><p style='color: white;'><img src='".asset('assets/img/img2/premium.png')."' alt='' height='17px' width='20px'> Pertamax</p></div>
+              <div class='col-xs-5' style='margin-top: -15px;'><p style='color: white;'><img src='".asset('assets/img/img2/gigi.png')."' alt='' height='15px' width='20px'>  ".$c->transmition."</p></div>
+              <div class='col-xs-4' style='margin-top: -15px; padding-right:1px; padding-left: 2px;'><p style='color: white;'><img src='".asset('assets/img/img2/premium.png')."' alt='' height='17px' width='20px'> ".$c->gas."</p></div>
               </ul>
               <p class='judul-pilih'>Harga Mobil</p>
               <p class='judul-pilih'>Lama Sewa : ".Session::get('hours')." jam</p>
@@ -112,6 +114,7 @@ class CarsController extends Controller
               <input type='hidden' name='carType' value='".$d->carType."'>
               <input type='hidden' name='carSeat' value='".$d->carSeat."'>
               <input type='hidden' name='carRatesPerHour' value='".$d->carRatesPerHour."'>
+              <input type='hidden' name='image' value='".$c->image."'>
               <div class='col-xs-4'><button type='submit' class='btn green-sea-pesan'>Pesan</button></div>
               </form>
               </div>";
@@ -126,9 +129,11 @@ class CarsController extends Controller
       $carTypeId  = Input::get('carTypeId');
       $carType  = Input::get('carType');
       $carRatesPerHour  = Input::get('carRatesPerHour');
+      $image  = Input::get('image');
       Session::set('carTypeId',$carTypeId);
       Session::set('carType',$carType);
       Session::set('carRatesPerHour',$carRatesPerHour);
+      Session::set('image',$image);
 
       return Redirect('cars/add-on');
     }

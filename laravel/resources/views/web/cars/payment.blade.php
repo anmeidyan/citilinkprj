@@ -59,7 +59,7 @@
       <div class="form-group">
         <label class="col-sm-3 control-label">Package</label>
         <div class="col-sm-9">
-          <p class="form-control-static">2 Hours</p>
+          <p class="form-control-static">{{ Session::get('hours') }} Hours</p>
         </div><!--/.col-->
       </div><!--/.form-group-->
       <div class="form-group">
